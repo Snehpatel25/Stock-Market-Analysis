@@ -1,0 +1,3008 @@
+[
+  {
+    "SYMBOL": "ADANIENT",
+    "COMPANY": "Adani Enterprises Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ADANIPORTS",
+    "COMPANY": "Adani Ports and Special Economic Zone Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "APOLLOHOSP",
+    "COMPANY": "Apollo Hospitals Enterprise Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ASIANPAINT",
+    "COMPANY": "Asian Paints Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "AXISBANK",
+    "COMPANY": "Axis Bank Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "BAJAJ-AUTO",
+    "COMPANY": "Bajaj Auto Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "BAJFINANCE",
+    "COMPANY": "Bajaj Finance Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "BAJAJFINSV",
+    "COMPANY": "Bajaj Finserv Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "BEL",
+    "COMPANY": "Bharat Electronics Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "BHARTIARTL",
+    "COMPANY": "Bharti Airtel Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "CIPLA",
+    "COMPANY": "Cipla Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "COALINDIA",
+    "COMPANY": "Coal India Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "DRREDDY",
+    "COMPANY": "Dr. Reddy's Laboratories Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "EICHERMOT",
+    "COMPANY": "Eicher Motors Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ETERNAL",
+    "COMPANY": "Eternal Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "GRASIM",
+    "COMPANY": "Grasim Industries Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "HCLTECH",
+    "COMPANY": "HCL Technologies Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "HDFCBANK",
+    "COMPANY": "HDFC Bank Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "HDFCLIFE",
+    "COMPANY": "HDFC Life Insurance Company Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "HEROMOTOCO",
+    "COMPANY": "Hero MotoCorp Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "HINDALCO",
+    "COMPANY": "Hindalco Industries Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "HINDUNILVR",
+    "COMPANY": "Hindustan Unilever Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ICICIBANK",
+    "COMPANY": "ICICI Bank Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ITC",
+    "COMPANY": "ITC Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "INDUSINDBK",
+    "COMPANY": "IndusInd Bank Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "INFY",
+    "COMPANY": "Infosys Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "JSWSTEEL",
+    "COMPANY": "JSW Steel Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "JIOFIN",
+    "COMPANY": "Jio Financial Services Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "KOTAKBANK",
+    "COMPANY": "Kotak Mahindra Bank Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "LT",
+    "COMPANY": "Larsen & Toubro Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "M&M",
+    "COMPANY": "Mahindra & Mahindra Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "MARUTI",
+    "COMPANY": "Maruti Suzuki India Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "NTPC",
+    "COMPANY": "NTPC Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "NESTLEIND",
+    "COMPANY": "Nestle India Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ONGC",
+    "COMPANY": "Oil & Natural Gas Corporation Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "POWERGRID",
+    "COMPANY": "Power Grid Corporation of India Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "RELIANCE",
+    "COMPANY": "Reliance Industries Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "SBILIFE",
+    "COMPANY": "SBI Life Insurance Company Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "SHRIRAMFIN",
+    "COMPANY": "Shriram Finance Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "SBIN",
+    "COMPANY": "State Bank of India",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "SUNPHARMA",
+    "COMPANY": "Sun Pharmaceutical Industries Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "TCS",
+    "COMPANY": "Tata Consultancy Services Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "TATACONSUM",
+    "COMPANY": "Tata Consumer Products Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "TATAMOTORS",
+    "COMPANY": "Tata Motors Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "TATASTEEL",
+    "COMPANY": "Tata Steel Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "TECHM",
+    "COMPANY": "Tech Mahindra Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "TITAN",
+    "COMPANY": "Titan Company Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "TRENT",
+    "COMPANY": "Trent Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ULTRACEMCO",
+    "COMPANY": "UltraTech Cement Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "WIPRO",
+    "COMPANY": "Wipro Ltd.",
+    "CAP": "Large Cap",
+    "INDEX": "NIFTY 50"
+  },
+  {
+    "SYMBOL": "ABB",
+    "COMPANY": "ABB India Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "ADANIENSOL",
+    "COMPANY": "Adani Energy Solutions Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "ADANIGREEN",
+    "COMPANY": "Adani Green Energy Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "ADANIPOWER",
+    "COMPANY": "Adani Power Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "AMBUJACEM",
+    "COMPANY": "Ambuja Cements Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "DMART",
+    "COMPANY": "Avenue Supermarts Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "BAJAJHLDNG",
+    "COMPANY": "Bajaj Holdings & Investment Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "BAJAJHFL",
+    "COMPANY": "Bajaj Housing Finance Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "BANKBARODA",
+    "COMPANY": "Bank of Baroda",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "BPCL",
+    "COMPANY": "Bharat Petroleum Corporation Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "BOSCHLTD",
+    "COMPANY": "Bosch Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "BRITANNIA",
+    "COMPANY": "Britannia Industries Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "CGPOWER",
+    "COMPANY": "CG Power and Industrial Solutions Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "CANBK",
+    "COMPANY": "Canara Bank",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "CHOLAFIN",
+    "COMPANY": "Cholamandalam Investment and Finance Company Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "DLF",
+    "COMPANY": "DLF Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "DABUR",
+    "COMPANY": "Dabur India Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "DIVISLAB",
+    "COMPANY": "Divi's Laboratories Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "GAIL",
+    "COMPANY": "GAIL (India) Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "GODREJCP",
+    "COMPANY": "Godrej Consumer Products Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "HAVELLS",
+    "COMPANY": "Havells India Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "HAL",
+    "COMPANY": "Hindustan Aeronautics Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "HYUNDAI",
+    "COMPANY": "Hyundai Motor India Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "ICICIGI",
+    "COMPANY": "ICICI Lombard General Insurance Company Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "ICICIPRULI",
+    "COMPANY": "ICICI Prudential Life Insurance Company Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "INDHOTEL",
+    "COMPANY": "Indian Hotels Co. Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "IOC",
+    "COMPANY": "Indian Oil Corporation Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "IRFC",
+    "COMPANY": "Indian Railway Finance Corporation Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "NAUKRI",
+    "COMPANY": "Info Edge (India) Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "INDIGO",
+    "COMPANY": "InterGlobe Aviation Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "JSWENERGY",
+    "COMPANY": "JSW Energy Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "JINDALSTEL",
+    "COMPANY": "Jindal Steel & Power Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "LTIM",
+    "COMPANY": "LTIMindtree Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "LICI",
+    "COMPANY": "Life Insurance Corporation of India",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "LODHA",
+    "COMPANY": "Macrotech Developers Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "PIDILITIND",
+    "COMPANY": "Pidilite Industries Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "PFC",
+    "COMPANY": "Power Finance Corporation Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "PNB",
+    "COMPANY": "Punjab National Bank",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "RECLTD",
+    "COMPANY": "REC Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "MOTHERSON",
+    "COMPANY": "Samvardhana Motherson International Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "SHREECEM",
+    "COMPANY": "Shree Cement Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "SIEMENS",
+    "COMPANY": "Siemens Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "SWIGGY",
+    "COMPANY": "Swiggy Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "TVSMOTOR",
+    "COMPANY": "TVS Motor Company Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "TATAPOWER",
+    "COMPANY": "Tata Power Co. Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "TORNTPHARM",
+    "COMPANY": "Torrent Pharmaceuticals Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "UNITDSPR",
+    "COMPANY": "United Spirits Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "VBL",
+    "COMPANY": "Varun Beverages Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "VEDL",
+    "COMPANY": "Vedanta Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "ZYDUSLIFE",
+    "COMPANY": "Zydus Lifesciences Ltd.",
+    "CAP": "Large/Mid Cap",
+    "INDEX": "NIFTY Next 50"
+  },
+  {
+    "SYMBOL": "360ONE",
+    "COMPANY": "360 ONE WAM Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "3MINDIA",
+    "COMPANY": "3M India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ACC",
+    "COMPANY": "ACC Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "AIAENG",
+    "COMPANY": "AIA Engineering Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "APLAPOLLO",
+    "COMPANY": "APL Apollo Tubes Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "AUBANK",
+    "COMPANY": "AU Small Finance Bank Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "AWL",
+    "COMPANY": "AWL Agri Business Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ABBOTINDIA",
+    "COMPANY": "Abbott India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ATGL",
+    "COMPANY": "Adani Total Gas Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ABCAPITAL",
+    "COMPANY": "Aditya Birla Capital Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ABFRL",
+    "COMPANY": "Aditya Birla Fashion and Retail Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "AJANTPHARM",
+    "COMPANY": "Ajanta Pharmaceuticals Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ALKEM",
+    "COMPANY": "Alkem Laboratories Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "APARINDS",
+    "COMPANY": "Apar Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "APOLLOTYRE",
+    "COMPANY": "Apollo Tyres Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ASHOKLEY",
+    "COMPANY": "Ashok Leyland Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ASTRAL",
+    "COMPANY": "Astral Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "AUROPHARMA",
+    "COMPANY": "Aurobindo Pharma Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BSE",
+    "COMPANY": "BSE Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BALKRISIND",
+    "COMPANY": "Balkrishna Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BANDHANBNK",
+    "COMPANY": "Bandhan Bank Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BANKINDIA",
+    "COMPANY": "Bank of India",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MAHABANK",
+    "COMPANY": "Bank of Maharashtra",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BERGEPAINT",
+    "COMPANY": "Berger Paints India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BDL",
+    "COMPANY": "Bharat Dynamics Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BHARATFORG",
+    "COMPANY": "Bharat Forge Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BHEL",
+    "COMPANY": "Bharat Heavy Electricals Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BHARTIHEXA",
+    "COMPANY": "Bharti Hexacom Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BIOCON",
+    "COMPANY": "Biocon Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "BLUESTARCO",
+    "COMPANY": "Blue Star Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "CRISIL",
+    "COMPANY": "CRISIL Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "COCHINSHIP",
+    "COMPANY": "Cochin Shipyard Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "COFORGE",
+    "COMPANY": "Coforge Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "COLPAL",
+    "COMPANY": "Colgate Palmolive (India) Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "CONCOR",
+    "COMPANY": "Container Corporation of India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "COROMANDEL",
+    "COMPANY": "Coromandel International Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "CUMMINSIND",
+    "COMPANY": "Cummins India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "DALBHARAT",
+    "COMPANY": "Dalmia Bharat Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "DEEPAKNTR",
+    "COMPANY": "Deepak Nitrite Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "DIXON",
+    "COMPANY": "Dixon Technologies (India) Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "EMAMILTD",
+    "COMPANY": "Emami Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ENDURANCE",
+    "COMPANY": "Endurance Technologies Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ESCORTS",
+    "COMPANY": "Escorts Kubota Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "EXIDEIND",
+    "COMPANY": "Exide Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NYKAA",
+    "COMPANY": "FSN E-Commerce Ventures Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "FEDERALBNK",
+    "COMPANY": "Federal Bank Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "FORTIS",
+    "COMPANY": "Fortis Healthcare Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GVT&D",
+    "COMPANY": "GE Vernova T&D India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GMRAIRPORT",
+    "COMPANY": "GMR Airports Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GICRE",
+    "COMPANY": "General Insurance Corporation of India",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GLAND",
+    "COMPANY": "Gland Pharma Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GLAXO",
+    "COMPANY": "Glaxosmithkline Pharmaceuticals Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GLENMARK",
+    "COMPANY": "Glenmark Pharmaceuticals Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MEDANTA",
+    "COMPANY": "Global Health Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GODREJIND",
+    "COMPANY": "Godrej Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GODREJPROP",
+    "COMPANY": "Godrej Properties Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "FLUOROCHEM",
+    "COMPANY": "Gujarat Fluorochemicals Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "GUJGASLTD",
+    "COMPANY": "Gujarat Gas Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "HDFCAMC",
+    "COMPANY": "HDFC Asset Management Company Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "HINDPETRO",
+    "COMPANY": "Hindustan Petroleum Corporation Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "HINDZINC",
+    "COMPANY": "Hindustan Zinc Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "POWERINDIA",
+    "COMPANY": "Hitachi Energy India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "HONAUT",
+    "COMPANY": "Honeywell Automation India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "HUDCO",
+    "COMPANY": "Housing & Urban Development Corporation Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "IDFCFIRSTB",
+    "COMPANY": "IDFC First Bank Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "IRB",
+    "COMPANY": "IRB Infrastructure Developers Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "INDIANB",
+    "COMPANY": "Indian Bank",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "IRCTC",
+    "COMPANY": "Indian Railway Catering And Tourism Corporation Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "IREDA",
+    "COMPANY": "Indian Renewable Energy Development Agency Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "IGL",
+    "COMPANY": "Indraprastha Gas Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "INDUSTOWER",
+    "COMPANY": "Indus Towers Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "IPCALAB",
+    "COMPANY": "Ipca Laboratories Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "JKCEMENT",
+    "COMPANY": "J.K. Cement Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "JSWINFRA",
+    "COMPANY": "JSW Infrastructure Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "JSL",
+    "COMPANY": "Jindal Stainless Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "JUBLFOOD",
+    "COMPANY": "Jubilant Foodworks Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "KPRMILL",
+    "COMPANY": "K.P.R. Mill Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "KEI",
+    "COMPANY": "KEI Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "KPITTECH",
+    "COMPANY": "KPIT Technologies Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "KALYANKJIL",
+    "COMPANY": "Kalyan Jewellers India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "LTF",
+    "COMPANY": "L&T Finance Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "LTTS",
+    "COMPANY": "L&T Technology Services Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "LICHSGFIN",
+    "COMPANY": "LIC Housing Finance Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "LINDEINDIA",
+    "COMPANY": "Linde India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "LLOYDSME",
+    "COMPANY": "Lloyds Metals And Energy Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "LUPIN",
+    "COMPANY": "Lupin Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MRF",
+    "COMPANY": "MRF Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "M&MFIN",
+    "COMPANY": "Mahindra & Mahindra Financial Services Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MRPL",
+    "COMPANY": "Mangalore Refinery & Petrochemicals Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MANKIND",
+    "COMPANY": "Mankind Pharma Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MARICO",
+    "COMPANY": "Marico Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MFSL",
+    "COMPANY": "Max Financial Services Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MAXHEALTH",
+    "COMPANY": "Max Healthcare Institute Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MAZDOCK",
+    "COMPANY": "Mazagoan Dock Shipbuilders Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MSUMI",
+    "COMPANY": "Motherson Sumi Wiring India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MOTILALOFS",
+    "COMPANY": "Motilal Oswal Financial Services Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MPHASIS",
+    "COMPANY": "MphasiS Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "MUTHOOTFIN",
+    "COMPANY": "Muthoot Finance Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NHPC",
+    "COMPANY": "NHPC Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NLCINDIA",
+    "COMPANY": "NLC India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NMDC",
+    "COMPANY": "NMDC Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NTPCGREEN",
+    "COMPANY": "NTPC Green Energy Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NATIONALUM",
+    "COMPANY": "National Aluminium Co. Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NAM-INDIA",
+    "COMPANY": "Nippon Life India Asset Management Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "OBEROIRLTY",
+    "COMPANY": "Oberoi Realty Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "OIL",
+    "COMPANY": "Oil India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "OLAELEC",
+    "COMPANY": "Ola Electric Mobility Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PAYTM",
+    "COMPANY": "One 97 Communications Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "OFSS",
+    "COMPANY": "Oracle Financial Services Software Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "POLICYBZR",
+    "COMPANY": "PB Fintech Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PIIND",
+    "COMPANY": "PI Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PAGEIND",
+    "COMPANY": "Page Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PATANJALI",
+    "COMPANY": "Patanjali Foods Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PERSISTENT",
+    "COMPANY": "Persistent Systems Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PETRONET",
+    "COMPANY": "Petronet LNG Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PHOENIXLTD",
+    "COMPANY": "Phoenix Mills Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "POLYCAB",
+    "COMPANY": "Polycab India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PREMIERENE",
+    "COMPANY": "Premier Energies Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "PRESTIGE",
+    "COMPANY": "Prestige Estates Projects Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "RVNL",
+    "COMPANY": "Rail Vikas Nigam Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SBICARD",
+    "COMPANY": "SBI Cards and Payment Services Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SJVN",
+    "COMPANY": "SJVN Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SRF",
+    "COMPANY": "SRF Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SCHAEFFLER",
+    "COMPANY": "Schaeffler India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SOLARINDS",
+    "COMPANY": "Solar Industries India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SONACOMS",
+    "COMPANY": "Sona BLW Precision Forgings Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "STARHEALTH",
+    "COMPANY": "Star Health and Allied Insurance Company Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SAIL",
+    "COMPANY": "Steel Authority of India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SUNTV",
+    "COMPANY": "Sun TV Network Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SUNDARMFIN",
+    "COMPANY": "Sundaram Finance Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SUPREMEIND",
+    "COMPANY": "Supreme Industries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SUZLON",
+    "COMPANY": "Suzlon Energy Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "SYNGENE",
+    "COMPANY": "Syngene International Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "TATACOMM",
+    "COMPANY": "Tata Communications Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "TATAELXSI",
+    "COMPANY": "Tata Elxsi Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "TATAINVEST",
+    "COMPANY": "Tata Investment Corporation Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "TATATECH",
+    "COMPANY": "Tata Technologies Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "NIACL",
+    "COMPANY": "The New India Assurance Company Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "THERMAX",
+    "COMPANY": "Thermax Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "TORNTPOWER",
+    "COMPANY": "Torrent Power Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "TIINDIA",
+    "COMPANY": "Tube Investments of India Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "UNOMINDA",
+    "COMPANY": "UNO Minda Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "UPL",
+    "COMPANY": "UPL Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "UNIONBANK",
+    "COMPANY": "Union Bank of India",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "UBL",
+    "COMPANY": "United Breweries Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "VMM",
+    "COMPANY": "Vishal Mega Mart Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "IDEA",
+    "COMPANY": "Vodafone Idea Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "VOLTAS",
+    "COMPANY": "Voltas Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "WAAREEENER",
+    "COMPANY": "Waaree Energies Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "YESBANK",
+    "COMPANY": "Yes Bank Ltd.",
+    "CAP": "Mid Cap",
+    "INDEX": "NIFTY Midcap 150"
+  },
+  {
+    "SYMBOL": "ACMESOLAR",
+    "COMPANY": "ACME Solar Holdings Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AADHARHFC",
+    "COMPANY": "Aadhar Housing Finance Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AARTIIND",
+    "COMPANY": "Aarti Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AAVAS",
+    "COMPANY": "Aavas Financiers Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ACE",
+    "COMPANY": "Action Construction Equipment Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ABREL",
+    "COMPANY": "Aditya Birla Real Estate Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ABSLAMC",
+    "COMPANY": "Aditya Birla Sun Life AMC Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AEGISLOG",
+    "COMPANY": "Aegis Logistics Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AFCONS",
+    "COMPANY": "Afcons Infrastructure Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AFFLE",
+    "COMPANY": "Affle 3i Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AKUMS",
+    "COMPANY": "Akums Drugs and Pharmaceuticals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "APLLTD",
+    "COMPANY": "Alembic Pharmaceuticals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ALIVUS",
+    "COMPANY": "Alivus Life Sciences Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ALKYLAMINE",
+    "COMPANY": "Alkyl Amines Chemicals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ALOKINDS",
+    "COMPANY": "Alok Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ARE&M",
+    "COMPANY": "Amara Raja Energy & Mobility Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AMBER",
+    "COMPANY": "Amber Enterprises India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ANANDRATHI",
+    "COMPANY": "Anand Rathi Wealth Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ANANTRAJ",
+    "COMPANY": "Anant Raj Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ANGELONE",
+    "COMPANY": "Angel One Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "APTUS",
+    "COMPANY": "Aptus Value Housing Finance India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ASAHIINDIA",
+    "COMPANY": "Asahi India Glass Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ASTERDM",
+    "COMPANY": "Aster DM Healthcare Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ASTRAZEN",
+    "COMPANY": "AstraZenca Pharma India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ATUL",
+    "COMPANY": "Atul Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "AIIL",
+    "COMPANY": "Authum Investment & Infrastructure Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BASF",
+    "COMPANY": "BASF India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BEML",
+    "COMPANY": "BEML Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BLS",
+    "COMPANY": "BLS International Services Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BALRAMCHIN",
+    "COMPANY": "Balrampur Chini Mills Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BATAINDIA",
+    "COMPANY": "Bata India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BAYERCROP",
+    "COMPANY": "Bayer Cropscience Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BIKAJI",
+    "COMPANY": "Bikaji Foods International Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BSOFT",
+    "COMPANY": "Birlasoft Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BLUEDART",
+    "COMPANY": "Blue Dart Express Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BBTC",
+    "COMPANY": "Bombay Burmah Trading Corporation Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "FIRSTCRY",
+    "COMPANY": "Brainbees Solutions Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "BRIGADE",
+    "COMPANY": "Brigade Enterprises Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MAPMYINDIA",
+    "COMPANY": "C.E. Info Systems Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CCL",
+    "COMPANY": "CCL Products (I) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CESC",
+    "COMPANY": "CESC Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CAMPUS",
+    "COMPANY": "Campus Activewear Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CANFINHOME",
+    "COMPANY": "Can Fin Homes Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CAPLIPOINT",
+    "COMPANY": "Caplin Point Laboratories Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CGCL",
+    "COMPANY": "Capri Global Capital Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CARBORUNIV",
+    "COMPANY": "Carborundum Universal Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CASTROLIND",
+    "COMPANY": "Castrol India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CEATLTD",
+    "COMPANY": "Ceat Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CENTRALBK",
+    "COMPANY": "Central Bank of India",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CDSL",
+    "COMPANY": "Central Depository Services (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CENTURYPLY",
+    "COMPANY": "Century Plyboards (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CERA",
+    "COMPANY": "Cera Sanitaryware Ltd",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CHALET",
+    "COMPANY": "Chalet Hotels Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CHAMBLFERT",
+    "COMPANY": "Chambal Fertilizers & Chemicals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CHENNPETRO",
+    "COMPANY": "Chennai Petroleum Corporation Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CHOLAHLDNG",
+    "COMPANY": "Cholamandalam Financial Holdings Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CUB",
+    "COMPANY": "City Union Bank Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CLEAN",
+    "COMPANY": "Clean Science and Technology Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "COHANCE",
+    "COMPANY": "Cohance Lifesciences Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CAMS",
+    "COMPANY": "Computer Age Management Services Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CONCORDBIO",
+    "COMPANY": "Concord Biotech Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CRAFTSMAN",
+    "COMPANY": "Craftsman Automation Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CREDITACC",
+    "COMPANY": "CreditAccess Grameen Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CROMPTON",
+    "COMPANY": "Crompton Greaves Consumer Electricals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "CYIENT",
+    "COMPANY": "Cyient Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "DCMSHRIRAM",
+    "COMPANY": "DCM Shriram Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "DOMS",
+    "COMPANY": "DOMS Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "DATAPATTNS",
+    "COMPANY": "Data Patterns (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "DEEPAKFERT",
+    "COMPANY": "Deepak Fertilisers & Petrochemicals Corp. Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "DELHIVERY",
+    "COMPANY": "Delhivery Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "DEVYANI",
+    "COMPANY": "Devyani International Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "LALPATHLAB",
+    "COMPANY": "Dr. Lal Path Labs Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "EIDPARRY",
+    "COMPANY": "E.I.D. Parry (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "EIHOTEL",
+    "COMPANY": "EIH Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ELECON",
+    "COMPANY": "Elecon Engineering Co. Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ELGIEQUIP",
+    "COMPANY": "Elgi Equipments Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "EMCURE",
+    "COMPANY": "Emcure Pharmaceuticals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ENGINERSIN",
+    "COMPANY": "Engineers India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ERIS",
+    "COMPANY": "Eris Lifesciences Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "FACT",
+    "COMPANY": "Fertilisers and Chemicals Travancore Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "FINCABLES",
+    "COMPANY": "Finolex Cables Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "FINPIPE",
+    "COMPANY": "Finolex Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "FSL",
+    "COMPANY": "Firstsource Solutions Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "FIVESTAR",
+    "COMPANY": "Five-Star Business Finance Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GRSE",
+    "COMPANY": "Garden Reach Shipbuilders & Engineers Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GILLETTE",
+    "COMPANY": "Gillette India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GODIGIT",
+    "COMPANY": "Go Digit General Insurance Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GPIL",
+    "COMPANY": "Godawari Power & Ispat Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GODFRYPHLP",
+    "COMPANY": "Godfrey Phillips India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GODREJAGRO",
+    "COMPANY": "Godrej Agrovet Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GRANULES",
+    "COMPANY": "Granules India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GRAPHITE",
+    "COMPANY": "Graphite India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GRAVITA",
+    "COMPANY": "Gravita India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GESHIP",
+    "COMPANY": "Great Eastern Shipping Co. Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GMDCLTD",
+    "COMPANY": "Gujarat Mineral Development Corporation Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GNFC",
+    "COMPANY": "Gujarat Narmada Valley Fertilizers and Chemicals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GPPL",
+    "COMPANY": "Gujarat Pipavav Port Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "GSPL",
+    "COMPANY": "Gujarat State Petronet Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HEG",
+    "COMPANY": "H.E.G. Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HBLENGINE",
+    "COMPANY": "HBL Engineering Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HFCL",
+    "COMPANY": "HFCL Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HAPPSTMNDS",
+    "COMPANY": "Happiest Minds Technologies Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HSCL",
+    "COMPANY": "Himadri Speciality Chemical Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HINDCOPPER",
+    "COMPANY": "Hindustan Copper Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HOMEFIRST",
+    "COMPANY": "Home First Finance Company India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "HONASA",
+    "COMPANY": "Honasa Consumer Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IDBI",
+    "COMPANY": "IDBI Bank Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IFCI",
+    "COMPANY": "IFCI Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IIFL",
+    "COMPANY": "IIFL Finance Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "INOXINDIA",
+    "COMPANY": "INOX India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IRCON",
+    "COMPANY": "IRCON International Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ITI",
+    "COMPANY": "ITI Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "INDGN",
+    "COMPANY": "Indegene Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "INDIACEM",
+    "COMPANY": "India Cements Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "INDIAMART",
+    "COMPANY": "Indiamart Intermesh Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IEX",
+    "COMPANY": "Indian Energy Exchange Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IOB",
+    "COMPANY": "Indian Overseas Bank",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "INOXWIND",
+    "COMPANY": "Inox Wind Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "INTELLECT",
+    "COMPANY": "Intellect Design Arena Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IGIL",
+    "COMPANY": "International Gemmological Institute (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "IKS",
+    "COMPANY": "Inventurus Knowledge Solutions Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JBCHEPHARM",
+    "COMPANY": "J.B. Chemicals & Pharmaceuticals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JBMA",
+    "COMPANY": "JBM Auto Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JKTYRE",
+    "COMPANY": "JK Tyre & Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JMFINANCIL",
+    "COMPANY": "JM Financial Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JSWHL",
+    "COMPANY": "JSW Holdings Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JPPOWER",
+    "COMPANY": "Jaiprakash Power Ventures Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "J&KBANK",
+    "COMPANY": "Jammu & Kashmir Bank Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JINDALSAW",
+    "COMPANY": "Jindal Saw Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JUBLINGREA",
+    "COMPANY": "Jubilant Ingrevia Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JUBLPHARMA",
+    "COMPANY": "Jubilant Pharmova Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JWL",
+    "COMPANY": "Jupiter Wagons Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JUSTDIAL",
+    "COMPANY": "Justdial Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JYOTHYLAB",
+    "COMPANY": "Jyothy Labs Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "JYOTICNC",
+    "COMPANY": "Jyoti CNC Automation Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KNRCON",
+    "COMPANY": "KNR Constructions Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KAJARIACER",
+    "COMPANY": "Kajaria Ceramics Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KPIL",
+    "COMPANY": "Kalpataru Projects International Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KANSAINER",
+    "COMPANY": "Kansai Nerolac Paints Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KARURVYSYA",
+    "COMPANY": "Karur Vysya Bank Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KAYNES",
+    "COMPANY": "Kaynes Technology India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KEC",
+    "COMPANY": "Kec International Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KFINTECH",
+    "COMPANY": "Kfin Technologies Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KIRLOSBROS",
+    "COMPANY": "Kirloskar Brothers Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KIRLOSENG",
+    "COMPANY": "Kirloskar Oil Eng Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "KIMS",
+    "COMPANY": "Krishna Institute of Medical Sciences Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "LTFOODS",
+    "COMPANY": "LT Foods Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "LATENTVIEW",
+    "COMPANY": "Latent View Analytics Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "LAURUSLABS",
+    "COMPANY": "Laurus Labs Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "LEMONTREE",
+    "COMPANY": "Lemon Tree Hotels Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MMTC",
+    "COMPANY": "MMTC Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MGL",
+    "COMPANY": "Mahanagar Gas Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MAHSEAMLES",
+    "COMPANY": "Maharashtra Seamless Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MANAPPURAM",
+    "COMPANY": "Manappuram Finance Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MASTEK",
+    "COMPANY": "Mastek Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "METROPOLIS",
+    "COMPANY": "Metropolis Healthcare Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MINDACORP",
+    "COMPANY": "Minda Corporation Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MCX",
+    "COMPANY": "Multi Commodity Exchange of India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NATCOPHARM",
+    "COMPANY": "NATCO Pharma Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NBCC",
+    "COMPANY": "NBCC (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NCC",
+    "COMPANY": "NCC Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NSLNISP",
+    "COMPANY": "NMDC Steel Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NH",
+    "COMPANY": "Narayana Hrudayalaya Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NAVA",
+    "COMPANY": "Nava Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NAVINFLUOR",
+    "COMPANY": "Navin Fluorine International Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NETWEB",
+    "COMPANY": "Netweb Technologies India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NETWORK18",
+    "COMPANY": "Network18 Media & Investments Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NEULANDLAB",
+    "COMPANY": "Neuland Laboratories Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NEWGEN",
+    "COMPANY": "Newgen Software Technologies Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NIVABUPA",
+    "COMPANY": "Niva Bupa Health Insurance Company Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "NUVAMA",
+    "COMPANY": "Nuvama Wealth Management Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "OLECTRA",
+    "COMPANY": "Olectra Greentech Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PCBL",
+    "COMPANY": "PCBL Chemical Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PGEL",
+    "COMPANY": "PG Electroplast Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PNBHOUSING",
+    "COMPANY": "PNB Housing Finance Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PNCINFRA",
+    "COMPANY": "PNC Infratech Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PTCIL",
+    "COMPANY": "PTC Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PVRINOX",
+    "COMPANY": "PVR INOX Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PFIZER",
+    "COMPANY": "Pfizer Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PEL",
+    "COMPANY": "Piramal Enterprises Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PPLPHARMA",
+    "COMPANY": "Piramal Pharma Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "POLYMED",
+    "COMPANY": "Poly Medicure Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "POONAWALLA",
+    "COMPANY": "Poonawalla Fincorp Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "PRAJIND",
+    "COMPANY": "Praj Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RRKABEL",
+    "COMPANY": "R R Kabel Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RBLBANK",
+    "COMPANY": "RBL Bank Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RHIM",
+    "COMPANY": "RHI MAGNESITA INDIA LTD.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RITES",
+    "COMPANY": "RITES Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RADICO",
+    "COMPANY": "Radico Khaitan Ltd",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RAILTEL",
+    "COMPANY": "Railtel Corporation Of India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RAINBOW",
+    "COMPANY": "Rainbow Childrens Medicare Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RKFORGE",
+    "COMPANY": "Ramkrishna Forgings Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RCF",
+    "COMPANY": "Rashtriya Chemicals & Fertilizers Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RTNINDIA",
+    "COMPANY": "RattanIndia Enterprises Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RAYMONDLSL",
+    "COMPANY": "Raymond Lifestyle Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RAYMOND",
+    "COMPANY": "Raymond Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RAYMONDREL",
+    "COMPANY": "Raymond Realty Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "REDINGTON",
+    "COMPANY": "Redington Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RPOWER",
+    "COMPANY": "Reliance Power Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ROUTE",
+    "COMPANY": "Route Mobile Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SBFC",
+    "COMPANY": "SBFC Finance Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SKFINDIA",
+    "COMPANY": "SKF India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SAGILITY",
+    "COMPANY": "Sagility India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SAILIFE",
+    "COMPANY": "Sai Life Sciences Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SAMMAANCAP",
+    "COMPANY": "Sammaan Capital Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SAPPHIRE",
+    "COMPANY": "Sapphire Foods India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SARDAEN",
+    "COMPANY": "Sarda Energy and Minerals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SAREGAMA",
+    "COMPANY": "Saregama India Ltd",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SCHNEIDER",
+    "COMPANY": "Schneider Electric Infrastructure Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SCI",
+    "COMPANY": "Shipping Corporation of India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RENUKA",
+    "COMPANY": "Shree Renuka Sugars Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SHYAMMETL",
+    "COMPANY": "Shyam Metalics and Energy Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SIGNATURE",
+    "COMPANY": "Signatureglobal (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SOBHA",
+    "COMPANY": "Sobha Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SONATSOFTW",
+    "COMPANY": "Sonata Software Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SWSOLAR",
+    "COMPANY": "Sterling and Wilson Renewable Energy Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SUMICHEM",
+    "COMPANY": "Sumitomo Chemical India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SUNDRMFAST",
+    "COMPANY": "Sundram Fasteners Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SWANENERGY",
+    "COMPANY": "Swan Energy Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "SYRMA",
+    "COMPANY": "Syrma SGS Technology Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TBOTEK",
+    "COMPANY": "TBO Tek Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TANLA",
+    "COMPANY": "Tanla Platforms Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TATACHEM",
+    "COMPANY": "Tata Chemicals Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TTML",
+    "COMPANY": "Tata Teleservices (Maharashtra) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TECHNOE",
+    "COMPANY": "Techno Electric & Engineering Company Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TEJASNET",
+    "COMPANY": "Tejas Networks Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "RAMCOCEM",
+    "COMPANY": "The Ramco Cements Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TIMKEN",
+    "COMPANY": "Timken India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TITAGARH",
+    "COMPANY": "Titagarh Rail Systems Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TARIL",
+    "COMPANY": "Transformers And Rectifiers (India) Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TRIDENT",
+    "COMPANY": "Trident Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TRIVENI",
+    "COMPANY": "Triveni Engineering & Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "TRITURBINE",
+    "COMPANY": "Triveni Turbine Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "UCOBANK",
+    "COMPANY": "UCO Bank",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "UTIAMC",
+    "COMPANY": "UTI Asset Management Company Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "USHAMART",
+    "COMPANY": "Usha Martin Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "VGUARD",
+    "COMPANY": "V-Guard Industries Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "DBREALTY",
+    "COMPANY": "Valor Estate Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "VTL",
+    "COMPANY": "Vardhman Textiles Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "MANYAVAR",
+    "COMPANY": "Vedant Fashions Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "VIJAYA",
+    "COMPANY": "Vijaya Diagnostic Centre Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "WELCORP",
+    "COMPANY": "Welspun Corp Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "WELSPUNLIV",
+    "COMPANY": "Welspun Living Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "WESTLIFE",
+    "COMPANY": "Westlife Foodworld Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "WHIRLPOOL",
+    "COMPANY": "Whirlpool of India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "WOCKPHARMA",
+    "COMPANY": "Wockhardt Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ZFCVINDIA",
+    "COMPANY": "ZF Commercial Vehicle Control Systems India Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ZEEL",
+    "COMPANY": "Zee Entertainment Enterprises Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ZENTEC",
+    "COMPANY": "Zen Technologies Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ZENSARTECH",
+    "COMPANY": "Zensar Technolgies Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  },
+  {
+    "SYMBOL": "ECLERX",
+    "COMPANY": "eClerx Services Ltd.",
+    "CAP": "Small Cap",
+    "INDEX": "NIFTY Smallcap 250"
+  }
+]
