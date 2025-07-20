@@ -254,6 +254,7 @@ app.post("/api/signup", authLimiter, async (req, res) => {
   }
 });
 
+app.options('/api/login', cors(corsOptions));
 // Login endpoint
 app.post("/api/login", authLimiter, async (req, res) => {
   try {

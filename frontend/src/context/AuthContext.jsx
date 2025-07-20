@@ -1,7 +1,7 @@
 // src/context/AuthContext.js
-
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -12,23 +12,31 @@ export const AuthProvider = ({ children }) => {
     loading: true,
     error: null
   });
+  const navigate = useNavigate();
 
-  // Shared Axios instance
+  // Shared Axios instance with better defaults
   const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000",
+    baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
     timeout: 10000,
-    headers: { "Content-Type": "application/json" }
+    withCredentials: true,
+    headers: { 
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
   });
 
-  // Automatically attach token
+  // Enhanced request interceptor
   api.interceptors.request.use(config => {
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
+  }, error => {
+    return Promise.reject(error);
   });
 
+  // Enhanced response interceptor
   api.interceptors.response.use(
     response => response,
     error => {
@@ -36,60 +44,88 @@ export const AuthProvider = ({ children }) => {
         error.message = "Request timeout - server not responding";
       } else if (error.code === "ERR_NETWORK") {
         error.message = "Network error - cannot connect to server";
+        // Redirect to maintenance page if multiple network errors occur
+        if (localStorage.getItem('networkErrorCount') > 2) {
+          navigate('/maintenance');
+        }
+      } else if (error.response?.status === 401) {
+        // Auto-logout on 401 Unauthorized
+        logout();
+        error.message = "Session expired - please login again";
+        navigate('/login', { state: { from: 'session-expired' } });
       } else if (error.response?.status === 404) {
         error.message = "Endpoint not found - please check server configuration";
+      } else if (error.response?.status === 500) {
+        error.message = "Server error - please try again later";
       }
+      
+      // Track network errors
+      if (error.code === "ERR_NETWORK") {
+        const errorCount = parseInt(localStorage.getItem('networkErrorCount') || '0') + 1;
+        localStorage.setItem('networkErrorCount', errorCount.toString());
+      }
+      
       return Promise.reject(error);
     }
   );
 
-  // Verify token on initial load
-  useEffect(() => {
-    const verifySession = async () => {
-      const token = localStorage.getItem("token");
-      const userData = localStorage.getItem("user");
+  // Persistent session verification
+  const verifySession = useCallback(async () => {
+    const token = localStorage.getItem("token");
+    const userData = localStorage.getItem("user");
 
-      if (token && userData) {
-        try {
-          const response = await api.get("/auth/verify");
-          if (response.data.valid) {
-            setAuthState({
-              isLoggedIn: true,
-              user: JSON.parse(userData),
-              loading: false,
-              error: null
-            });
-          } else {
-            throw new Error("Invalid token");
-          }
-        } catch (err) {
-          console.error("Session expired:", err);
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
-          setAuthState({
-            isLoggedIn: false,
-            user: null,
-            loading: false,
-            error: "Session expired, please login again"
-          });
-        }
+    if (!token || !userData) {
+      setAuthState(prev => ({ ...prev, loading: false }));
+      return;
+    }
+
+    try {
+      const response = await api.get("/protected");
+      if (response.data?.user) {
+        setAuthState({
+          isLoggedIn: true,
+          user: response.data.user,
+          loading: false,
+          error: null
+        });
+        localStorage.setItem('user', JSON.stringify(response.data.user));
       } else {
-        setAuthState(prev => ({ ...prev, loading: false }));
+        throw new Error("Invalid session data");
       }
-    };
+    } catch (err) {
+      console.error("Session verification failed:", err);
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setAuthState({
+        isLoggedIn: false,
+        user: null,
+        loading: false,
+        error: "Session expired, please login again"
+      });
+    }
+  }, [api]);
 
+  // Verify session on mount and periodically
+  useEffect(() => {
     verifySession();
-  }, []);
+    
+    // Set up periodic session verification (every 5 minutes)
+    const interval = setInterval(verifySession, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [verifySession]);
 
-  // Login method
+  // Login method with enhanced error handling
   const login = async (credentials) => {
     setAuthState(prev => ({ ...prev, loading: true, error: null }));
+    localStorage.removeItem('networkErrorCount');
 
     try {
       const response = await api.post("/login", credentials);
       const { token, user } = response.data;
 
-      if (!token || !user) throw new Error("Invalid server response");
+      if (!token || !user) {
+        throw new Error("Invalid server response");
+      }
 
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
@@ -102,29 +138,42 @@ export const AuthProvider = ({ children }) => {
       });
 
       return user;
-
     } catch (error) {
       console.error("Login error:", error);
+      
+      let errorMessage = "Login failed. Please try again.";
+      if (error.response) {
+        errorMessage = error.response.data?.error || 
+                      error.response.data?.message || 
+                      `Server error (${error.response.status})`;
+      }
 
-      const errorMessage = error.response?.data?.error || "Login failed. Try again.";
       setAuthState(prev => ({
         ...prev,
         loading: false,
         error: errorMessage
       }));
+      
       throw new Error(errorMessage);
     }
   };
 
-  // Register method
+  // Register method with validation
   const register = async (userData) => {
     setAuthState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
+      // Client-side validation
+      if (!userData.username || !userData.password || !userData.email) {
+        throw new Error("Missing required fields");
+      }
+
       const response = await api.post("/signup", userData);
       const { token, user } = response.data;
 
-      if (!token || !user) throw new Error("Invalid server response");
+      if (!token || !user) {
+        throw new Error("Registration failed - invalid server response");
+      }
 
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
@@ -137,52 +186,77 @@ export const AuthProvider = ({ children }) => {
       });
 
       return user;
-
     } catch (error) {
-      console.error("Register error:", error);
+      console.error("Registration error:", error);
+      
+      let errorMessage = "Registration failed. Please try again.";
+      if (error.response) {
+        errorMessage = error.response.data?.error || 
+                       error.response.data?.message || 
+                       `Server error (${error.response.status})`;
+      } else if (error.message === "Missing required fields") {
+        errorMessage = "Please fill all required fields";
+      }
 
-      const errorMessage = error.response?.data?.error || "Registration failed.";
       setAuthState(prev => ({
         ...prev,
         loading: false,
         error: errorMessage
       }));
+      
       throw new Error(errorMessage);
     }
   };
 
-  // Update user
+  // Update user with optimistic UI updates
   const updateUser = async (updatedData) => {
-    setAuthState(prev => ({ ...prev, loading: true }));
-
+    const previousUser = authState.user;
+    
     try {
+      // Optimistic update
+      const tempUser = { ...previousUser, ...updatedData };
+      setAuthState(prev => ({
+        ...prev,
+        user: tempUser
+      }));
+      localStorage.setItem("user", JSON.stringify(tempUser));
+
       const response = await api.put("/auth/user", updatedData);
       const updatedUser = response.data.user;
 
+      // Final update after server confirmation
+      setAuthState(prev => ({
+        ...prev,
+        user: updatedUser
+      }));
       localStorage.setItem("user", JSON.stringify(updatedUser));
 
-      setAuthState(prev => ({
-        ...prev,
-        user: updatedUser,
-        loading: false
-      }));
-
       return updatedUser;
-
     } catch (error) {
       console.error("Update error:", error);
-      const errorMessage = error.response?.data?.error || "Update failed.";
+      
+      // Revert to previous state on error
       setAuthState(prev => ({
         ...prev,
-        loading: false,
+        user: previousUser
+      }));
+      localStorage.setItem("user", JSON.stringify(previousUser));
+
+      const errorMessage = error.response?.data?.error || 
+                         "Update failed. Please try again.";
+      
+      setAuthState(prev => ({
+        ...prev,
         error: errorMessage
       }));
+      
       throw new Error(errorMessage);
     }
   };
 
-  // Logout
-  const logout = () => {
+  // Logout with cleanup
+  const logout = useCallback(() => {
+    // Async cleanup (like API call for server-side logout) can be added here
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setAuthState({
@@ -191,19 +265,23 @@ export const AuthProvider = ({ children }) => {
       loading: false,
       error: null
     });
+    navigate('/login');
+  }, [navigate]);
+
+  // Clear errors manually
+  const clearError = () => {
+    setAuthState(prev => ({ ...prev, error: null }));
   };
 
   const contextValue = {
-    isLoggedIn: authState.isLoggedIn,
-    user: authState.user,
-    username: authState.user?.username || null, // helpful for routes
-    loading: authState.loading,
-    error: authState.error,
+    ...authState,
     login,
     register,
     logout,
     updateUser,
-    api
+    clearError,
+    api,
+    verifySession
   };
 
   return (
@@ -213,4 +291,10 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};

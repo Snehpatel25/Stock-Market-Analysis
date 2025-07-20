@@ -5,21 +5,59 @@
       "src": "server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["package.json"],
-        "maxLambdaSize": "50mb"
+        "includeFiles": [
+          "package.json",
+          "package-lock.json",
+          ".env.local"
+        ],
+        "maxLambdaSize": "50mb",
+        "suppressLoaders": true,
+        "zeroConfig": false
       }
     }
   ],
   "routes": [
     {
+      "src": "/api/health",
+      "dest": "server.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/api/signup",
+      "dest": "server.js",
+      "methods": ["POST", "OPTIONS"]
+    },
+    {
+      "src": "/api/login",
+      "dest": "server.js",
+      "methods": ["POST", "OPTIONS"]
+    },
+    {
+      "src": "/api/protected",
+      "dest": "server.js",
+      "methods": ["GET", "OPTIONS"]
+    },
+    {
       "src": "/api/(.*)",
       "dest": "server.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     },
     {
       "src": "/(.*)",
       "dest": "server.js",
-      "status": 200
+      "status": 200,
+      "headers": {
+        "Access-Control-Allow-Origin": "https://sp-stockanalysis.netlify.app",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true"
+      }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
