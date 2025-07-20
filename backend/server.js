@@ -211,6 +211,13 @@ app.post("/api/login", authLimiter, async (req, res) => {
   }
 });
 
+app.get('/',(req,res)=>{
+  res.send({
+    activeStatus:true,
+    error:false
+  })
+})
+
 app.get("/api/protected", authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
