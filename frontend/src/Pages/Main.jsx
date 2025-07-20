@@ -297,7 +297,7 @@ const Main = () => {
     <>
       {isLoggedIn ? <AfterLoginHeader /> : <Header />}
       
-      <div className="bg-[#0A1428] min-h-screen text-white px-4 sm:px-6 md:px-8 lg:px-16 pt-4 mt-14 sm:pt-6">
+      <div className="bg-[#0A1428] min-h-screen text-white px-4 sm:px-6 md:px-8 lg:px-16 pt-4 mt-20 sm:pt-6">
         <main className="mt-0">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-3">
             <div>
@@ -377,7 +377,6 @@ const Main = () => {
             </div>
           </div>
           
-          {/* Market and Sectors Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
             {stocksData.map((stock, i) => (
               <motion.div
@@ -433,7 +432,6 @@ const Main = () => {
             ))}
           </div>
 
-          {/* Today's Stocks and News */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
             <div className="lg:col-span-2">
               <div className="p-4 sm:p-6 rounded-xl bg-[#101B33] border border-[#1b2e50] shadow-md">
@@ -528,10 +526,8 @@ const Main = () => {
             </div>
           </div>
 
-          {/* Risk Analyzer Component */}
           <RiskAnalyzer />
 
-          {/* Featured Analysis and Portfolio */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10 mt-6 sm:mt-10">
             <div className="lg:col-span-2">
               <div className="p-4 sm:p-6 rounded-xl bg-[#101B33] border border-[#1b2e50] shadow-md">
@@ -644,7 +640,6 @@ const Main = () => {
             </div>
           </div>
 
-          {/* AI Stock Recommendations */}
           <AIStockRecommendations />
         </main>
       </div>

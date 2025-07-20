@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }) => {
     setAuthState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await api.post("/api/login", credentials);
+      const response = await api.post("/login", credentials);
       const { token, user } = response.data;
 
       if (!token || !user) throw new Error("Invalid server response");
@@ -121,7 +121,7 @@ export const AuthProvider = ({ children }) => {
     setAuthState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await api.post("/api/signup", userData);
+      const response = await api.post("/signup", userData);
       const { token, user } = response.data;
 
       if (!token || !user) throw new Error("Invalid server response");

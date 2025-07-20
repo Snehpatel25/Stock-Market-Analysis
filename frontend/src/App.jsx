@@ -56,7 +56,7 @@ const PostLoginRedirect = () => {
   const { user } = useAuth();
   
   if (user?.role === "admin") {
-    return <Navigate to="/admin/dashboard" replace />; // Changed to /admin/dashboard
+    return <Navigate to="/admin" replace />; // Changed to /admin/dashboard
   }
   return <Navigate to={`/${user?.username}`} replace />;
 };

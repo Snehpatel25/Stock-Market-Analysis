@@ -17,7 +17,6 @@ const Alerts = () => {
   const [expandedAlert, setExpandedAlert] = useState(null);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
-  // Original data with more realistic examples
   const initialTriggeredAlerts = [
     { id: 1, stock: 'AAPL', message: 'Price dropped below ₹120.00', price: '₹113.15', change: '+5.7%', time: 'Today, 10:20 AM', details: 'Apple stock has dropped below your threshold of ₹120.00. Current price is ₹113.15.' },
     { id: 2, stock: 'TSLA', message: 'AI Model predicts 5% rise', price: '₹156.36', change: '+2.5%', time: 'Today, 09:45 AM', details: 'Our AI model predicts a 5% rise in Tesla stock within the next 24 hours based on recent patterns.' },
@@ -47,7 +46,6 @@ const Alerts = () => {
     { id: 9, symbol: 'WMT', name: 'Walmart Inc.', price: '₹65.28', change: '+0.4%', marketCap: '₹440B', sector: 'Retail', added: '1 week ago' }
   ];
 
-  // State for all data with localStorage persistence
   const [alerts, setAlerts] = useState(() => {
     const saved = localStorage.getItem('myAlerts');
     return saved ? JSON.parse(saved) : initialMyAlerts;
@@ -72,7 +70,6 @@ const Alerts = () => {
     change: ''
   });
 
-  // Save to localStorage whenever state changes
   useEffect(() => {
     localStorage.setItem('myAlerts', JSON.stringify(alerts));
   }, [alerts]);
@@ -85,7 +82,6 @@ const Alerts = () => {
     localStorage.setItem('watchlist', JSON.stringify(myWatchlist));
   }, [myWatchlist]);
 
-  // Check for mobile view
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -94,12 +90,11 @@ const Alerts = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Alert actions
   const handleCreateAlert = () => {
     if (!newAlert.stock || !newAlert.value) return;
     
     const newAlertItem = {
-      id: Date.now(), // Use timestamp for unique ID
+      id: Date.now(), 
       stock: newAlert.stock.toUpperCase(),
       condition: `${newAlert.type} ${newAlert.condition} ₹${newAlert.value}`,
       status: 'Active',
@@ -140,7 +135,6 @@ const Alerts = () => {
     ));
   };
 
-  // Watchlist actions
   const removeFromWatchlist = (id) => {
     setMyWatchlist(myWatchlist.filter(item => item.id !== id));
   };
@@ -169,13 +163,11 @@ const Alerts = () => {
     });
   };
 
-  // Search and filter
   const filteredWatchlist = myWatchlist.filter(item =>
     item.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Sorting functionality
   const requestSort = (key) => {
     let direction = 'asc';
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -188,13 +180,11 @@ const Alerts = () => {
     if (!sortConfig.key) return items;
     
     return [...items].sort((a, b) => {
-      // Extract numeric values for proper sorting
       const extractNumber = (str) => parseFloat(str.replace(/[^0-9.-]/g, ''));
       
       let aValue = a[sortConfig.key];
       let bValue = b[sortConfig.key];
       
-      // Special handling for price and change fields
       if (sortConfig.key === 'price' || sortConfig.key === 'triggerPrice') {
         aValue = extractNumber(aValue);
         bValue = extractNumber(bValue);
@@ -213,7 +203,6 @@ const Alerts = () => {
     });
   };
 
-  // Toggle alert details expansion
   const toggleAlertDetails = (id) => {
     setExpandedAlert(expandedAlert === id ? null : id);
   };
@@ -222,7 +211,6 @@ const Alerts = () => {
     <><AfterLoginHeader />
       <div className="bg-[#0A1428] min-h-screen text-white px-4 sm:px-6 md:px-8 lg:px-16 pt-4 mt-20 sm:pt-6">
         <div>
-          {/* Tab Navigation - Enhanced for mobile */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
             <div>
               <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">
@@ -246,7 +234,6 @@ const Alerts = () => {
             </div>
           </div>
 
-          {/* Alerts Content */}
           {activeTab === 'Alerts' ? (
             <div className="space-y-6">
               {/* Recently Triggered Alerts - Enhanced with more features */}
@@ -291,7 +278,6 @@ const Alerts = () => {
                           </div>
                         </div>
                         
-                        {/* Expandable details */}
                         <div className="mt-3 pt-3 border-t border-[#27375E]">
                           <button 
                             onClick={() => toggleAlertDetails(alert.id)}
@@ -331,7 +317,6 @@ const Alerts = () => {
                 )}
               </div>
 
-              {/* My Alerts - Enhanced with sorting and more details */}
               <div className="bg-[#101B33] border border-[#1b2e50] rounded-xl p-4 sm:p-6 shadow-lg">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
                   <h2 className="text-lg sm:text-xl font-semibold">My Alerts ({alerts.length})</h2>
@@ -439,7 +424,6 @@ const Alerts = () => {
               </div>
             </div>
           ) : (
-            /* Watchlist Content - Enhanced with more features */
             <div className="bg-[#101B33] border border-[#1b2e50] rounded-xl p-4 sm:p-6 shadow-lg">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
                 <h2 className="text-lg sm:text-xl font-semibold">My Watchlist ({myWatchlist.length})</h2>
@@ -560,7 +544,6 @@ const Alerts = () => {
           )}
         </div>
 
-        {/* Create Alert Modal - Enhanced with more options */}
         {showCreateAlert && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-[#101B33] border border-[#1b2e50] rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
@@ -666,7 +649,6 @@ const Alerts = () => {
           </div>
         )}
 
-        {/* Add Stock Modal */}
         {showAddStockModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-[#101B33] border border-[#1b2e50] rounded-xl p-6 w-full max-w-md">

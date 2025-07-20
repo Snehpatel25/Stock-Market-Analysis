@@ -16,8 +16,6 @@ import AfterLoginHeader from "../componants/AfterLoginHeader";
 import AllPageFooter from '../componants/AllPageFooter';
 import { useAuth } from "../context/AuthContext";
 
-// ========== NEW COMPONENTS ========== //
-
 const MarketIndices = () => {
   const indices = [
     { name: "NIFTY 50", value: "22,326.90", change: "+1.21%", volume: "45.2M" },
@@ -290,8 +288,6 @@ const AdvancedMarketChart = () => {
   );
 };
 
-// ========== EXISTING COMPONENTS (UNCHANGED) ========== //
-
 const UserTable = ({ users, onEdit, onDelete }) => {
   return (
     <div className="overflow-auto">
@@ -551,7 +547,6 @@ const UserSearch = ({ value, onChange, onAdd, onReset }) => (
   </div>
 );
 
-// Main AdminDashboard Component
 const AdminDashboard = () => {
   const { isLoggedIn } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
@@ -710,7 +705,6 @@ const AdminDashboard = () => {
   );
 };
 
-// Sample Data
 const sampleUsers = [
   { id: 1001, name: "Sneh Patel", email: "snehpatel@gmail.com", status: "Active", plan: "Premium", registered: "May 10, 2025", lastLogin: "May 26, 2025" },
   { id: 1002, name: "Diya Mehta", email: "diya@gmail.com", status: "Inactive", plan: "Standard", registered: "May 8, 2025", lastLogin: "May 25, 2025" },
