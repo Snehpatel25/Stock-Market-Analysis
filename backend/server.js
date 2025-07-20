@@ -7,123 +7,57 @@ import jwt from "jsonwebtoken";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 
-// Load environment variables
 dotenv.config({ path: [".env.local", ".env"] });
-
-// Validate required environment variables
-const requiredEnvVars = ['JWT_SECRET', 'MONGO_URI'];
-const missingVars = requiredEnvVars.filter(v => !process.env[v]);
-
-if (missingVars.length > 0) {
-  console.error(`❌ FATAL: Missing required environment variables: ${missingVars.join(', ')}`);
-  process.exit(1);
-}
-
-// Validate JWT_SECRET length
-if (process.env.JWT_SECRET.length < 32) {
-  console.error('❌ FATAL: JWT_SECRET must be at least 32 characters long');
-  process.exit(1);
-}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// Enhanced Security Middleware
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:"],
-      connectSrc: ["'self'", "https://sp-stockanalysis.netlify.app"]
-    }
-  },
-  crossOriginResourcePolicy: { policy: "cross-origin" }
-}));
+if (!JWT_SECRET) {
+  console.error("❌ FATAL: JWT_SECRET is not defined");
+  process.exit(1);
+}
 
+app.use(helmet());
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// CORS Configuration
-const allowedOrigins = [
-  "https://sp-stockanalysis.netlify.app",
-  "http://localhost:5173",
-  "http://127.0.0.1:5173"
-];
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://sp-stockanalysis.netlify.app/"
+  ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   optionsSuccessStatus: 200,
-  exposedHeaders: ["Authorization"]
 };
-
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
 
-// Additional CORS headers
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
-
-// Rate Limiting
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
-  message: {
-    error: "Too many requests",
-    message: "Please try again later"
-  },
+  message: "Too many requests, please try again later.",
   standardHeaders: true,
   legacyHeaders: false,
-  skip: (req) => req.path === '/api/health'
 });
 
-// Database Connection
-const connectDB = async () => {
+const connectWithRetry = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 30000,
-      connectTimeoutMS: 30000,
-      retryWrites: true,
-      w: 'majority'
     });
     console.log("✅ Connected to MongoDB");
   } catch (err) {
     console.error("MongoDB connection error:", err.message);
-    if (process.env.NODE_ENV === "production") {
-      process.exit(1);
-    } else {
-      console.log("Retrying connection in 5 seconds...");
-      setTimeout(connectDB, 5000);
-    }
+    setTimeout(connectWithRetry, 5000);
   }
 };
+connectWithRetry();
 
-mongoose.connection.on("disconnected", () => {
-  console.log("MongoDB disconnected");
-  if (process.env.NODE_ENV === "production") {
-    connectDB();
-  }
-});
-
-connectDB();
-
-// User Schema
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true, trim: true, maxlength: 50 },
   lastName: { type: String, required: true, trim: true, maxlength: 50 },
@@ -167,56 +101,36 @@ const userSchema = new mongoose.Schema({
   lastLogin: Date,
 });
 
-// Password hashing middleware
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  
-  try {
-    const salt = await bcrypt.genSalt(12);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (err) {
-    next(err);
-  }
+  const salt = await bcrypt.genSalt(12);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("createaccounts", userSchema);
 
-// Health check endpoint
 app.get("/api/health", (req, res) => {
   const dbStatus = mongoose.connection.readyState === 1 ? "connected" : "disconnected";
-  res.status(200).json({
+  res.json({
     status: "OK",
     db: dbStatus,
     uptime: process.uptime(),
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || "development"
   });
 });
 
-// Signup endpoint
 app.post("/api/signup", authLimiter, async (req, res) => {
   try {
     const { firstName, lastName, email, username, password, mobile, isAdmin } = req.body;
 
-    const requiredFields = { firstName, lastName, email, username, password, mobile };
-    const missingFields = Object.entries(requiredFields)
-      .filter(([_, value]) => !value)
-      .map(([key]) => key);
-
-    if (missingFields.length > 0) {
-      return res.status(400).json({ 
-        error: "Missing required fields.",
-        missingFields
-      });
+    if (!firstName || !lastName || !email || !username || !password || !mobile) {
+      return res.status(400).json({ error: "Missing required fields." });
     }
 
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
-      return res.status(409).json({ 
-        error: "User already exists.",
-        conflict: existingUser.email === email ? "email" : "username"
-      });
+      return res.status(409).json({ error: "User already exists." });
     }
 
     const newUser = await User.create({
@@ -247,24 +161,16 @@ app.post("/api/signup", authLimiter, async (req, res) => {
 
   } catch (err) {
     console.error("Signup error:", err);
-    res.status(500).json({ 
-      error: "Registration failed.",
-      details: process.env.NODE_ENV === "development" ? err.message : undefined
-    });
+    res.status(500).json({ error: "Registration failed.", details: err.message });
   }
 });
 
-app.options('/api/login', cors(corsOptions));
-// Login endpoint
 app.post("/api/login", authLimiter, async (req, res) => {
   try {
     const { username, password, userType } = req.body;
 
     if (!username || !password) {
-      return res.status(400).json({ 
-        error: "Username and password required.",
-        missing: !username ? "username" : "password"
-      });
+      return res.status(400).json({ error: "Username and password required." });
     }
 
     const user = await User.findOne({ username }).select("+password");
@@ -278,10 +184,7 @@ app.post("/api/login", authLimiter, async (req, res) => {
     }
 
     if (userType && ((userType === "admin" && !user.isAdmin) || (userType === "user" && user.isAdmin))) {
-      return res.status(403).json({ 
-        error: `Account is not a ${userType} account.`,
-        isAdmin: user.isAdmin
-      });
+      return res.status(403).json({ error: `Account is not a ${userType} account.` });
     }
 
     user.lastLogin = new Date();
@@ -293,16 +196,6 @@ app.post("/api/login", authLimiter, async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    // Set HTTP-only cookie in production
-    if (process.env.NODE_ENV === "production") {
-      res.cookie('token', token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        maxAge: 24 * 60 * 60 * 1000
-      });
-    }
-
     const userResponse = user.toObject();
     delete userResponse.password;
 
@@ -310,72 +203,51 @@ app.post("/api/login", authLimiter, async (req, res) => {
       success: true,
       message: "Login successful.",
       user: userResponse,
-      token: process.env.NODE_ENV === "production" ? undefined : token
+      token,
     });
 
   } catch (err) {
     console.error("Login error:", err);
-    res.status(500).json({ 
-      error: "Authentication failed.",
-      details: process.env.NODE_ENV === "development" ? err.message : undefined
-    });
+    res.status(500).json({ error: "Authentication failed.", details: err.message });
   }
 });
 
-// Root endpoint
-app.get('/', (req, res) => {
-  res.status(200).json({
-    status: "active",
-    error: false,
-    apiVersion: "1.0",
-    documentation: "/api/docs"
-  });
-});
+app.get('/',(req,res)=>{
+  res.send({
+    activeStatus:true,
+    error:false
+  })
+})
 
-// Protected route
 app.get("/api/protected", authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
-    if (!user) {
-      return res.status(404).json({ error: "User not found." });
-    }
+    if (!user) return res.status(404).json({ error: "User not found." });
 
     res.json({
-      success: true,
       message: "Protected route accessed successfully.",
       user,
     });
 
   } catch (err) {
     console.error("Protected route error:", err);
-    res.status(500).json({ 
-      error: "Server error.",
-      details: process.env.NODE_ENV === "development" ? err.message : undefined
-    });
+    res.status(500).json({ error: "Server error." });
   }
 });
 
-// Authentication middleware
 function authenticateToken(req, res, next) {
-  // Check for token in cookies first (production)
-  let token = req.cookies?.token;
-  
-  // Fallback to Authorization header
-  if (!token) {
-    const authHeader = req.headers["authorization"];
-    token = authHeader?.split(" ")[1];
-  }
+  const authHeader = req.headers["authorization"];
+  const token = authHeader?.split(" ")[1];
 
   if (!token) {
-    return res.status(401).json({ error: "Authentication token required." });
+    return res.status(401).json({ error: "Authentication required." });
   }
 
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.status(403).json({
         error: "Invalid token.",
-        details: err.message.includes("expired") ? "Token expired" : "Invalid token",
-        solution: err.message.includes("expired") ? "Please login again" : "Provide a valid token"
+        details: err.message.includes("expired") ? "Token has expired" : "Invalid token.",
       });
     }
     req.user = decoded;
@@ -383,56 +255,23 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// 404 Handler
 app.use((req, res) => {
-  res.status(404).json({ 
-    error: "Endpoint not found.",
-    requestedUrl: req.originalUrl,
-    availableEndpoints: [
-      "GET /api/health",
-      "POST /api/signup",
-      "POST /api/login",
-      "GET /api/protected"
-    ]
-  });
+  res.status(404).json({ error: "Endpoint not found.", requestedUrl: req.originalUrl });
 });
 
-// Error handler
 app.use((err, req, res, next) => {
-  console.error("Unhandled error:", err);
+  console.error("Unhandled server error:", err);
   res.status(500).json({
     error: "Internal server error.",
-    details: process.env.NODE_ENV === "development" ? err.message : undefined,
-    stack: process.env.NODE_ENV === "development" ? err.stack : undefined
+    details: err.message,
   });
 });
 
-// Server startup
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📡 Available endpoints:`);
-  console.log(`- GET  /api/health`);
-  console.log(`- POST /api/signup`);
-  console.log(`- POST /api/login`);
-  console.log(`- GET  /api/protected`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  
-  if (process.env.NODE_ENV !== 'production') {
-    console.log("MongoDB connected to:", mongoose.connection.host);
-  }
+app.listen(PORT, () => {
+  console.log(`🚀 Server running: http://localhost:${PORT}`);
+  console.log(`📡 Available endpoints:
+  - GET  /api/health
+  - POST /api/signup
+  - POST /api/login
+  - GET  /api/protected`);
 });
-
-// Graceful shutdown
-const shutdown = () => {
-  console.log("Shutting down gracefully...");
-  server.close(() => {
-    console.log("Server closed.");
-    mongoose.connection.close(false, () => {
-      console.log("MongoDB connection closed.");
-      process.exit(0);
-    });
-  });
-};
-
-process.on("SIGTERM", shutdown);
-process.on("SIGINT", shutdown);
