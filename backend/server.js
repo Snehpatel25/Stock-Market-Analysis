@@ -7,52 +7,90 @@ import jwt from "jsonwebtoken";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 
+// Load environment variables
 dotenv.config({ path: [".env.local", ".env"] });
+
+// Validate required environment variables
+const requiredEnvVars = ['JWT_SECRET', 'MONGO_URI'];
+const missingVars = requiredEnvVars.filter(v => !process.env[v]);
+
+if (missingVars.length > 0) {
+  console.error(`❌ FATAL: Missing required environment variables: ${missingVars.join(', ')}`);
+  process.exit(1);
+}
+
+// Validate JWT_SECRET length
+if (process.env.JWT_SECRET.length < 32) {
+  console.error('❌ FATAL: JWT_SECRET must be at least 32 characters long');
+  process.exit(1);
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// Validate essential environment variables
-if (!JWT_SECRET) {
-  console.error("❌ FATAL: JWT_SECRET is not defined");
-  process.exit(1);
-}
+// Enhanced Security Middleware
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:"],
+      connectSrc: ["'self'", "https://sp-stockanalysis.netlify.app"]
+    }
+  },
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 
-if (!process.env.MONGO_URI) {
-  console.error("❌ FATAL: MONGO_URI is not defined");
-  process.exit(1);
-}
-
-// Security and middleware
-app.use(helmet());
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// CORS configuration
+// CORS Configuration
+const allowedOrigins = [
+  "https://sp-stockanalysis.netlify.app",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173"
+];
+
 const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://sp-stockanalysis.netlify.app"
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   optionsSuccessStatus: 200,
+  exposedHeaders: ["Authorization"]
 };
-app.use(cors(corsOptions));
 
-// Rate limiting
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+// Additional CORS headers
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
+// Rate Limiting
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
-  message: "Too many requests, please try again later.",
+  message: {
+    error: "Too many requests",
+    message: "Please try again later"
+  },
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => req.path === '/api/health'
 });
 
-// Database connection with retry and timeout
+// Database Connection
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
@@ -60,25 +98,26 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 30000,
-      connectTimeoutMS: 30000
+      connectTimeoutMS: 30000,
+      retryWrites: true,
+      w: 'majority'
     });
     console.log("✅ Connected to MongoDB");
   } catch (err) {
     console.error("MongoDB connection error:", err.message);
-    // Exit process in production, retry in development
     if (process.env.NODE_ENV === "production") {
       process.exit(1);
     } else {
+      console.log("Retrying connection in 5 seconds...");
       setTimeout(connectDB, 5000);
     }
   }
 };
 
-// MongoDB connection events
 mongoose.connection.on("disconnected", () => {
   console.log("MongoDB disconnected");
   if (process.env.NODE_ENV === "production") {
-    connectDB(); // Auto-reconnect in production
+    connectDB();
   }
 });
 
@@ -160,7 +199,6 @@ app.post("/api/signup", authLimiter, async (req, res) => {
   try {
     const { firstName, lastName, email, username, password, mobile, isAdmin } = req.body;
 
-    // Validate required fields
     const requiredFields = { firstName, lastName, email, username, password, mobile };
     const missingFields = Object.entries(requiredFields)
       .filter(([_, value]) => !value)
@@ -173,7 +211,6 @@ app.post("/api/signup", authLimiter, async (req, res) => {
       });
     }
 
-    // Check for existing user
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
       return res.status(409).json({ 
@@ -182,7 +219,6 @@ app.post("/api/signup", authLimiter, async (req, res) => {
       });
     }
 
-    // Create new user
     const newUser = await User.create({
       firstName,
       lastName,
@@ -193,14 +229,12 @@ app.post("/api/signup", authLimiter, async (req, res) => {
       isAdmin: !!isAdmin,
     });
 
-    // Generate JWT token
     const token = jwt.sign(
       { userId: newUser._id, isAdmin: newUser.isAdmin },
       JWT_SECRET,
       { expiresIn: "1d" }
     );
 
-    // Prepare user response without password
     const userResponse = newUser.toObject();
     delete userResponse.password;
 
@@ -249,18 +283,25 @@ app.post("/api/login", authLimiter, async (req, res) => {
       });
     }
 
-    // Update last login
     user.lastLogin = new Date();
     await user.save();
 
-    // Generate token
     const token = jwt.sign(
       { userId: user._id, isAdmin: user.isAdmin },
       JWT_SECRET,
       { expiresIn: "1d" }
     );
 
-    // Prepare response
+    // Set HTTP-only cookie in production
+    if (process.env.NODE_ENV === "production") {
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        maxAge: 24 * 60 * 60 * 1000
+      });
+    }
+
     const userResponse = user.toObject();
     delete userResponse.password;
 
@@ -268,7 +309,7 @@ app.post("/api/login", authLimiter, async (req, res) => {
       success: true,
       message: "Login successful.",
       user: userResponse,
-      token,
+      token: process.env.NODE_ENV === "production" ? undefined : token
     });
 
   } catch (err) {
@@ -315,8 +356,14 @@ app.get("/api/protected", authenticateToken, async (req, res) => {
 
 // Authentication middleware
 function authenticateToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader?.split(" ")[1];
+  // Check for token in cookies first (production)
+  let token = req.cookies?.token;
+  
+  // Fallback to Authorization header
+  if (!token) {
+    const authHeader = req.headers["authorization"];
+    token = authHeader?.split(" ")[1];
+  }
 
   if (!token) {
     return res.status(401).json({ error: "Authentication token required." });
@@ -360,18 +407,23 @@ app.use((err, req, res, next) => {
 });
 
 // Server startup
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📡 Available endpoints:`);
   console.log(`- GET  /api/health`);
   console.log(`- POST /api/signup`);
   console.log(`- POST /api/login`);
   console.log(`- GET  /api/protected`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  
+  if (process.env.NODE_ENV !== 'production') {
+    console.log("MongoDB connected to:", mongoose.connection.host);
+  }
 });
 
-// Handle shutdown gracefully
-process.on("SIGTERM", () => {
-  console.log("SIGTERM received. Shutting down gracefully...");
+// Graceful shutdown
+const shutdown = () => {
+  console.log("Shutting down gracefully...");
   server.close(() => {
     console.log("Server closed.");
     mongoose.connection.close(false, () => {
@@ -379,15 +431,7 @@ process.on("SIGTERM", () => {
       process.exit(0);
     });
   });
-});
+};
 
-process.on("SIGINT", () => {
-  console.log("SIGINT received. Shutting down gracefully...");
-  server.close(() => {
-    console.log("Server closed.");
-    mongoose.connection.close(false, () => {
-      console.log("MongoDB connection closed.");
-      process.exit(0);
-    });
-  });
-});
+process.on("SIGTERM", shutdown);
+process.on("SIGINT", shutdown);
