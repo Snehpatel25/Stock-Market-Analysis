@@ -24,9 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
   origin: [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://sp-stockanalysis.netlify.app/"
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -211,13 +210,6 @@ app.post("/api/login", authLimiter, async (req, res) => {
     res.status(500).json({ error: "Authentication failed.", details: err.message });
   }
 });
-
-app.get('/',(req,res)=>{
-  res.send({
-    activeStatus:true,
-    error:false
-  })
-})
 
 app.get("/api/protected", authenticateToken, async (req, res) => {
   try {
