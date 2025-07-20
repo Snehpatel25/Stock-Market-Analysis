@@ -1,4 +1,3 @@
-// server.js
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -18,10 +17,6 @@ if (!JWT_SECRET) {
   console.error("❌ FATAL: JWT_SECRET is not defined");
   process.exit(1);
 }
-
-// ─────────────────────────────────────────────
-// MIDDLEWARE
-// ─────────────────────────────────────────────
 
 app.use(helmet());
 app.use(express.json({ limit: "10kb" }));
@@ -47,10 +42,6 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// ─────────────────────────────────────────────
-// DB CONNECTION
-// ─────────────────────────────────────────────
-
 const connectWithRetry = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
@@ -65,10 +56,6 @@ const connectWithRetry = async () => {
   }
 };
 connectWithRetry();
-
-// ─────────────────────────────────────────────
-// USER MODEL
-// ─────────────────────────────────────────────
 
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true, trim: true, maxlength: 50 },
@@ -97,7 +84,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 8,
-    select: false, // must use .select('+password') when querying!
+    select: false, 
   },
   mobile: {
     type: String,
@@ -113,7 +100,6 @@ const userSchema = new mongoose.Schema({
   lastLogin: Date,
 });
 
-// Hash password before saving
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(12);
@@ -123,11 +109,6 @@ userSchema.pre("save", async function (next) {
 
 const User = mongoose.model("createaccounts", userSchema);
 
-// ─────────────────────────────────────────────
-// ROUTES
-// ─────────────────────────────────────────────
-
-// Health check
 app.get("/api/health", (req, res) => {
   const dbStatus = mongoose.connection.readyState === 1 ? "connected" : "disconnected";
   res.json({
@@ -138,7 +119,6 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Signup
 app.post("/api/signup", authLimiter, async (req, res) => {
   try {
     const { firstName, lastName, email, username, password, mobile, isAdmin } = req.body;
@@ -184,7 +164,6 @@ app.post("/api/signup", authLimiter, async (req, res) => {
   }
 });
 
-// Login
 app.post("/api/login", authLimiter, async (req, res) => {
   try {
     const { username, password, userType } = req.body;
@@ -232,7 +211,6 @@ app.post("/api/login", authLimiter, async (req, res) => {
   }
 });
 
-// Protected route example
 app.get("/api/protected", authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
@@ -249,9 +227,6 @@ app.get("/api/protected", authenticateToken, async (req, res) => {
   }
 });
 
-// ─────────────────────────────────────────────
-// JWT Middleware
-// ─────────────────────────────────────────────
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader?.split(" ")[1];
@@ -272,9 +247,6 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// ─────────────────────────────────────────────
-// 404 + Global error handler
-// ─────────────────────────────────────────────
 app.use((req, res) => {
   res.status(404).json({ error: "Endpoint not found.", requestedUrl: req.originalUrl });
 });
@@ -287,9 +259,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// ─────────────────────────────────────────────
-// START SERVER
-// ─────────────────────────────────────────────
 app.listen(PORT, () => {
   console.log(`🚀 Server running: http://localhost:${PORT}`);
   console.log(`📡 Available endpoints:
