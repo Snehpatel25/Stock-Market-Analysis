@@ -11,3 +11,6 @@
   for = "/*.mjs"
   [headers.values]
     Content-Type = "application/javascript"
+
+[build.environment]
+  VITE_API_URL = "https://your-backend-server.com"

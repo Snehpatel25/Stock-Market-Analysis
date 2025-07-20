@@ -9,8 +9,9 @@
     "vercel-build": "npm prune --production && echo 'Vercel build complete'"
   },
   "dependencies": {
-    "bcryptjs": "^3.0.2",
     "@fastify/cors": "^8.2.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.1",
