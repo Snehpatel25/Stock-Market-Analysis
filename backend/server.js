@@ -32,7 +32,7 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   optionsSuccessStatus: 200,
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
