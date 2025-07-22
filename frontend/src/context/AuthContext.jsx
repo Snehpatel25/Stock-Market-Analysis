@@ -1,7 +1,7 @@
 // src/context/AuthContext.js
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -13,14 +13,12 @@ export const AuthProvider = ({ children }) => {
     error: null
   });
 
-  // Shared Axios instance
   const api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000",
     timeout: 10000,
     headers: { "Content-Type": "application/json" }
   });
 
-  // Automatically attach token
   api.interceptors.request.use(config => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -43,7 +41,6 @@ export const AuthProvider = ({ children }) => {
     }
   );
 
-  // Verify token on initial load
   useEffect(() => {
     const verifySession = async () => {
       const token = localStorage.getItem("token");
@@ -81,7 +78,6 @@ export const AuthProvider = ({ children }) => {
     verifySession();
   }, []);
 
-  // Login method
   const login = async (credentials) => {
     setAuthState(prev => ({ ...prev, loading: true, error: null }));
 
@@ -105,18 +101,16 @@ export const AuthProvider = ({ children }) => {
 
     } catch (error) {
       console.error("Login error:", error);
-
       const errorMessage = error.response?.data?.error || "Login failed. Try again.";
       setAuthState(prev => ({
         ...prev,
         loading: false,
         error: errorMessage
       }));
-      throw new Error(errorMessage);
+      throw error;
     }
   };
 
-  // Register method
   const register = async (userData) => {
     setAuthState(prev => ({ ...prev, loading: true, error: null }));
 
@@ -140,7 +134,6 @@ export const AuthProvider = ({ children }) => {
 
     } catch (error) {
       console.error("Register error:", error);
-
       const errorMessage = error.response?.data?.error || "Registration failed.";
       setAuthState(prev => ({
         ...prev,
@@ -151,7 +144,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Update user
   const updateUser = async (updatedData) => {
     setAuthState(prev => ({ ...prev, loading: true }));
 
@@ -181,7 +173,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Logout
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -194,11 +185,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const contextValue = {
-    isLoggedIn: authState.isLoggedIn,
-    user: authState.user,
-    username: authState.user?.username || null, // helpful for routes
-    loading: authState.loading,
-    error: authState.error,
+    ...authState,
     login,
     register,
     logout,

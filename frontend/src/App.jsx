@@ -1,3 +1,4 @@
+// src/App.jsx
 import React from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -42,23 +43,14 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
   }
 
   if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (adminOnly && !user?.isAdmin ) {
     return <Navigate to="/" replace />;
   }
 
-  if (adminOnly && user?.role !== "admin") {
-    return <Navigate to="/" replace />; // Redirect to home if not admin
-  }
-
   return children;
-};
-
-const PostLoginRedirect = () => {
-  const { user } = useAuth();
-  
-  if (user?.role === "admin") {
-    return <Navigate to="/admin" replace />; // Changed to /admin/dashboard
-  }
-  return <Navigate to={`/${user?.username}`} replace />;
 };
 
 const App = () => {
@@ -102,7 +94,6 @@ const App = () => {
                 </motion.div>
               } />
               
-              {/* Admin routes */}
               <Route path="/admin" element={
                 <ProtectedRoute adminOnly>
                   <motion.div
@@ -116,7 +107,6 @@ const App = () => {
                 </ProtectedRoute>
               } />
               
-              {/* User profile route */}
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <motion.div
@@ -130,19 +120,6 @@ const App = () => {
                 </ProtectedRoute>
               } />
               
-              {/* Regular user routes */}
-              <Route path="/:username" element={
-                <ProtectedRoute>
-                  <motion.div
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    variants={pageVariants}
-                  >
-                    <Main />
-                  </motion.div>
-                </ProtectedRoute>
-              } />
               <Route path="/market" element={
                 <ProtectedRoute>
                   <motion.div

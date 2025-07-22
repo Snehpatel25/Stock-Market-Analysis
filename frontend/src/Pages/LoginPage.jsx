@@ -1,3 +1,4 @@
+// src/Pages/LoginPage.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -15,11 +16,6 @@ const LoginPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await handleLogin();
-  };
-
   const validateForm = () => {
     const errors = [];
     if (!username.trim()) errors.push('Username is required');
@@ -27,7 +23,8 @@ const LoginPage = () => {
     return errors;
   };
 
-  const handleLogin = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setError('');
 
@@ -45,27 +42,35 @@ const LoginPage = () => {
         userType
       });
 
-      // Clear form fields after successful login
       setUsername('');
       setPassword('');
 
-      // ✅ Corrected redirect logic
-      if (user.isAdmin) {
-        navigate('/admin');
+      if (user?.isAdmin) {
+        navigate('/admin', { replace: true });
       } else {
-        navigate(`/${user.username}`);
+        navigate('/', { replace: true });
       }
-
 
     } catch (err) {
       console.error('Login error:', err);
-      let errorMessage = err.message;
+      let errorMessage = 'Login failed. Please try again.';
 
-      // Special handling for 404 errors
-      if (err.message.includes('not found')) {
-        errorMessage = 'Login service unavailable. Please contact support.';
-      } else if (err.response?.status === 404) {
-        errorMessage = 'Authentication service not available';
+      if (err.response) {
+        if (err.response.status === 401) {
+          errorMessage = 'Invalid username or password';
+        } else if (err.response.status === 403) {
+          errorMessage = 'Account not authorized';
+        } else if (err.response.status === 404) {
+          errorMessage = 'Authentication service unavailable';
+        } else if (err.response.data?.error) {
+          errorMessage = err.response.data.error;
+        }
+      } else if (err.request) {
+        errorMessage = 'Network error - please check your connection';
+      } else if (err.message.includes('timeout')) {
+        errorMessage = 'Request timeout - server not responding';
+      } else if (err.message) {
+        errorMessage = err.message;
       }
 
       setError(errorMessage);
@@ -127,10 +132,11 @@ const LoginPage = () => {
                   key={type}
                   type="button"
                   onClick={() => setUserType(type)}
-                  className={`w-1/2 py-2 text-lg font-semibold transition-all duration-300 ${userType === type
+                  className={`w-1/2 py-2 text-lg font-semibold transition-all duration-300 ${
+                    userType === type
                       ? 'bg-gradient-to-r from-[#2e4b68] to-[#395d84] text-white shadow-md'
                       : 'bg-[#1b2735] text-gray-300 hover:bg-[#263545]'
-                    }`}
+                  }`}
                 >
                   {type.charAt(0).toUpperCase() + type.slice(1)}
                 </button>
@@ -191,10 +197,11 @@ const LoginPage = () => {
                   whileHover={{ scale: loading ? 1 : 1.03 }}
                   whileTap={{ scale: loading ? 1 : 0.97 }}
                   disabled={loading}
-                  className={`w-full py-3 rounded-xl text-lg font-semibold text-white shadow-md transition-all duration-300 ${loading
+                  className={`w-full py-3 rounded-xl text-lg font-semibold text-white shadow-md transition-all duration-300 ${
+                    loading
                       ? 'bg-gray-600 cursor-not-allowed'
                       : 'bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600'
-                    }`}
+                  }`}
                 >
                   {loading ? 'Authenticating...' : 'Log In'}
                 </motion.button>
