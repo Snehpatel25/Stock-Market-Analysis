@@ -42,23 +42,14 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
   }
 
   if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (adminOnly && !user?.isAdmin) {
     return <Navigate to="/" replace />;
   }
 
-  if (adminOnly && user?.role !== "admin") {
-    return <Navigate to="/" replace />; // Redirect to home if not admin
-  }
-
   return children;
-};
-
-const PostLoginRedirect = () => {
-  const { user } = useAuth();
-  
-  if (user?.role === "admin") {
-    return <Navigate to="/admin" replace />; // Changed to /admin/dashboard
-  }
-  return <Navigate to={`/${user?.username}`} replace />;
 };
 
 const App = () => {
@@ -71,6 +62,7 @@ const App = () => {
         <main className="flex-grow">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
+              {/* Public routes */}
               <Route path="/" element={
                 <motion.div
                   initial="initial"
@@ -81,6 +73,7 @@ const App = () => {
                   <Main />
                 </motion.div>
               } />
+              
               <Route path="/login" element={
                 <motion.div
                   initial="initial"
@@ -91,6 +84,7 @@ const App = () => {
                   <LoginPage />
                 </motion.div>
               } />
+              
               <Route path="/signup" element={
                 <motion.div
                   initial="initial"
@@ -101,7 +95,7 @@ const App = () => {
                   <SignUp />
                 </motion.div>
               } />
-              
+
               {/* Admin routes */}
               <Route path="/admin" element={
                 <ProtectedRoute adminOnly>
@@ -115,8 +109,34 @@ const App = () => {
                   </motion.div>
                 </ProtectedRoute>
               } />
+
+              {/* Protected user routes */}
+              <Route path="/:username" element={
+                <ProtectedRoute>
+                  <motion.div
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    variants={pageVariants}
+                  >
+                    <Main />
+                  </motion.div>
+                </ProtectedRoute>
+              } />
               
-              {/* User profile route */}
+              <Route path="/market" element={
+                <ProtectedRoute>
+                  <motion.div
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    variants={pageVariants}
+                  >
+                    <Market />
+                  </motion.div>
+                </ProtectedRoute>
+              } />
+              
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <motion.div
@@ -130,31 +150,6 @@ const App = () => {
                 </ProtectedRoute>
               } />
               
-              {/* Regular user routes */}
-              <Route path="/:username" element={
-                <ProtectedRoute>
-                  <motion.div
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    variants={pageVariants}
-                  >
-                    <Main />
-                  </motion.div>
-                </ProtectedRoute>
-              } />
-              <Route path="/market" element={
-                <ProtectedRoute>
-                  <motion.div
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    variants={pageVariants}
-                  >
-                    <Market />
-                  </motion.div>
-                </ProtectedRoute>
-              } />
               <Route path="/news" element={
                 <ProtectedRoute>
                   <motion.div
@@ -167,6 +162,7 @@ const App = () => {
                   </motion.div>
                 </ProtectedRoute>
               } />
+              
               <Route path="/alerts" element={
                 <ProtectedRoute>
                   <motion.div
@@ -179,6 +175,7 @@ const App = () => {
                   </motion.div>
                 </ProtectedRoute>
               } />
+              
               <Route path="/models" element={
                 <ProtectedRoute>
                   <motion.div
@@ -191,6 +188,7 @@ const App = () => {
                   </motion.div>
                 </ProtectedRoute>
               } />
+              
               <Route path="/portfolio" element={
                 <ProtectedRoute>
                   <motion.div
@@ -203,6 +201,9 @@ const App = () => {
                   </motion.div>
                 </ProtectedRoute>
               } />
+              
+              {/* Catch-all route */}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </AnimatePresence>
         </main>
