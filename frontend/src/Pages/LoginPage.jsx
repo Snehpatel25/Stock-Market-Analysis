@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -12,19 +12,8 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const { login, user, isLoggedIn } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
-
-  // Redirect if already logged in
-  useEffect(() => {
-    if (isLoggedIn) {
-      if (user?.isAdmin) {
-        navigate('/admin');
-      } else {
-        navigate(`/${user.username}`);
-      }
-    }
-  }, [isLoggedIn, user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +39,7 @@ const LoginPage = () => {
     }
 
     try {
-      const userData = await login({
+      const user = await login({
         username: username.trim(),
         password: password.trim(),
         userType
@@ -60,20 +49,23 @@ const LoginPage = () => {
       setUsername('');
       setPassword('');
 
-      // The useEffect hook will handle the redirection based on the updated auth state
+      // ✅ Corrected redirect logic
+      if (user.isAdmin) {
+        navigate('/admin');
+      } else {
+        navigate(`/${user.username}`);
+      }
+
+
     } catch (err) {
       console.error('Login error:', err);
-      let errorMessage = err.message || 'Login failed';
+      let errorMessage = err.message;
 
-      // Special handling for specific errors
+      // Special handling for 404 errors
       if (err.message.includes('not found')) {
         errorMessage = 'Login service unavailable. Please contact support.';
       } else if (err.response?.status === 404) {
         errorMessage = 'Authentication service not available';
-      } else if (err.response?.status === 401) {
-        errorMessage = 'Invalid username or password';
-      } else if (err.response?.status === 403) {
-        errorMessage = 'Access denied. Please check your user type.';
       }
 
       setError(errorMessage);
@@ -135,11 +127,10 @@ const LoginPage = () => {
                   key={type}
                   type="button"
                   onClick={() => setUserType(type)}
-                  className={`w-1/2 py-2 text-lg font-semibold transition-all duration-300 ${
-                    userType === type
+                  className={`w-1/2 py-2 text-lg font-semibold transition-all duration-300 ${userType === type
                       ? 'bg-gradient-to-r from-[#2e4b68] to-[#395d84] text-white shadow-md'
                       : 'bg-[#1b2735] text-gray-300 hover:bg-[#263545]'
-                  }`}
+                    }`}
                 >
                   {type.charAt(0).toUpperCase() + type.slice(1)}
                 </button>
@@ -200,11 +191,10 @@ const LoginPage = () => {
                   whileHover={{ scale: loading ? 1 : 1.03 }}
                   whileTap={{ scale: loading ? 1 : 0.97 }}
                   disabled={loading}
-                  className={`w-full py-3 rounded-xl text-lg font-semibold text-white shadow-md transition-all duration-300 ${
-                    loading
+                  className={`w-full py-3 rounded-xl text-lg font-semibold text-white shadow-md transition-all duration-300 ${loading
                       ? 'bg-gray-600 cursor-not-allowed'
                       : 'bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600'
-                  }`}
+                    }`}
                 >
                   {loading ? 'Authenticating...' : 'Log In'}
                 </motion.button>
