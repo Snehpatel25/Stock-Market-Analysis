@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import AllPageFooter from '../componants/AllPageFooter';
 import AfterLoginHeader from '../componants/AfterLoginHeader';
+import TradingView from '../componants/TradingView';
 
 ChartJS.register(
   CategoryScale,
@@ -493,7 +494,7 @@ const Market = () => {
                 </div>
                 <div className="flex sm:justify-end gap-2 mt-2">
                   <button
-                    className="bg-blue-600 hover:bg-blue-700 px-3 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm"
+                      className="bg-blue-600 hover:bg-blue-700 px-3 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm"
                     onClick={handleAddToWatchlist}
                   >
                     + Watchlist
@@ -512,88 +513,7 @@ const Market = () => {
 
         {/* Chart Section */}
         <div className="bg-[#101B33] rounded-xl p-4 sm:p-6 mb-6 border border-[#1b2e50]">
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 sm:mb-6 gap-4">
-            <div>
-              <h3 className="text-base sm:text-lg font-bold mb-1">Advanced Price Analysis</h3>
-              <div className="flex flex-wrap items-center gap-x-4 text-xs sm:text-sm text-gray-400">
-                <span className="flex items-center">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded mr-1 sm:mr-2"></div>
-                  <span>Actual</span>
-                </span>
-                <span className="flex items-center">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-500 rounded mr-1 sm:mr-2"></div>
-                  <span>Predicted</span>
-                </span>
-                <span className="flex items-center">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded mr-1 sm:mr-2"></div>
-                  <span>MA (50D)</span>
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-1 sm:gap-2">
-              {timeframes.map((tf) => (
-                <button
-                  key={tf}
-                  onClick={() => setSelectedTimeframe(tf)}
-                  className={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm transition-all ${selectedTimeframe === tf
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                    : 'bg-[#1E2A4A] text-gray-300 hover:bg-[#2a3a62]'
-                    }`}
-                >
-                  {tf}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="h-64 sm:h-80 md:h-96 bg-[#0A1428] rounded-lg border border-[#1b2e50] p-2 sm:p-4 relative">
-            {chartData ? (
-              <>
-                <Line
-                  data={{
-                    ...chartData,
-                    datasets: [
-                      ...chartData.datasets,
-                      {
-                        label: 'Moving Average (50D)',
-                        data: chartData.datasets[0].data.map((_, i, arr) => {
-                          const start = Math.max(0, i - 49);
-                          const slice = arr.slice(start, i + 1);
-                          return slice.reduce((a, b) => a + b, 0) / slice.length;
-                        }),
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        tension: 0.1,
-                        borderWidth: 1.5,
-                        borderDash: [5, 5]
-                      }
-                    ]
-                  }}
-                  options={chartOptions}
-                />
-                {!isMobile && (
-                  <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex space-x-2">
-                    <button className="bg-[#1E2A4A] text-gray-300 hover:bg-[#2a3a62] p-1 sm:p-2 rounded-lg">
-                      <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </button>
-                    <button className="bg-[#1E2A4A] text-gray-300 hover:bg-[#2a3a62] p-1 sm:p-2 rounded-lg">
-                      <BarChart3 className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </button>
-                    <button className="bg-[#1E2A4A] text-gray-300 hover:bg-[#2a3a62] p-1 sm:p-2 rounded-lg">
-                      <Activity className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </button>
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="h-full flex items-center justify-center text-gray-400">
-                <div className="text-center">
-                  <Activity className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-2 sm:mb-4 animate-pulse" />
-                  <p className="text-xs sm:text-sm">Loading advanced chart data...</p>
-                </div>
-              </div>
-            )}
-          </div>
+          <TradingView/>
         </div>
 
         {/* Model Performance Grid */}

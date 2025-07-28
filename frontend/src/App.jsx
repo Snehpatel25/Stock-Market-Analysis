@@ -14,6 +14,7 @@ import News from "./Pages/News";
 import Alerts from "./Pages/Alerts";
 import Models from "./Pages/Models";
 import Portfolio from "./Pages/Portfolio";
+import TradingView from "./componants/TradingView";
 
 const pageVariants = {
   initial: {
@@ -46,7 +47,7 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (adminOnly && !user?.isAdmin ) {
+  if (adminOnly && !user?.isAdmin) {
     return <Navigate to="/" replace />;
   }
 
@@ -93,7 +94,7 @@ const App = () => {
                   <SignUp />
                 </motion.div>
               } />
-              
+
               <Route path="/admin" element={
                 <ProtectedRoute adminOnly>
                   <motion.div
@@ -106,7 +107,18 @@ const App = () => {
                   </motion.div>
                 </ProtectedRoute>
               } />
-              
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <motion.div
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    variants={pageVariants}
+                  >
+                    <Main/>
+                  </motion.div>
+                </ProtectedRoute>
+              } />
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <motion.div
@@ -119,7 +131,7 @@ const App = () => {
                   </motion.div>
                 </ProtectedRoute>
               } />
-              
+
               <Route path="/market" element={
                 <ProtectedRoute>
                   <motion.div

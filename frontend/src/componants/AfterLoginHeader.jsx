@@ -56,13 +56,6 @@ const AfterLoginHeader = () => {
     { name: "Alerts", path: "/alerts" },
   ];
 
-  const menuItems = [
-    { name: "Market", icon: <BarChart2 size={18} />, path: "/market" },
-    { name: "News", icon: <Newspaper size={18} />, path: "/news" },
-    { name: "Portfolio", icon: <Briefcase size={18} />, path: "/portfolio" },
-    { name: "Models", icon: <Cpu size={18} />, path: "/models" },
-    { name: "My Profile", icon: <UserIcon size={18} />, path: "/profile" },
-  ];
 
   const handleLogout = () => {
     logout();
