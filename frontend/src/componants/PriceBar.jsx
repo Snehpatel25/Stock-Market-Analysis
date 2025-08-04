@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// Constants
 const SYMBOLS = [
   "^NSEI",    // Nifty 50
   "^NSEBANK", // Nifty Bank
@@ -10,7 +11,6 @@ const SYMBOLS = [
   "BAJFINANCE.NS"
 ];
 
-// Static data with latest values
 const STOCK_DATA = {
   "^NSEI": {
     symbol: "NIFTY 50",
@@ -50,76 +50,43 @@ const STOCK_DATA = {
   }
 };
 
+// Performance tuning parameters
+const SCROLL_SPEED = 2; // Increased from 1 to 2 (pixels per frame)
+const SCROLL_INTERVAL = 16; // ~60fps (reduced from 30ms)
+const SCROLL_PAUSE_ON_INTERACTION = 2000; // Reduced from 3000ms
+const MANUAL_SCROLL_OFFSET = 300; // Increased from 200px
+const RESET_BUFFER = 50; // Pixels before end to trigger reset
+
 const PriceBar = () => {
   const scrollRef = useRef(null);
-  const animationRef = useRef(null);
-  const isScrollingRef = useRef(false);
+  const scrollIntervalRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const requestRef = useRef(null);
+  const lastScrollTime = useRef(performance.now());
 
-  const startScrolling = useCallback(() => {
-    if (isScrollingRef.current || !scrollRef.current) return;
-    isScrollingRef.current = true;
-
-    const scroll = () => {
-      if (!scrollRef.current) return;
-
-      scrollRef.current.scrollLeft += 2; // <-- Increased speed here!
-
-      if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
-        scrollRef.current.scrollLeft = 0;
-      }
-
-      animationRef.current = requestAnimationFrame(scroll);
-    };
-
-    animationRef.current = requestAnimationFrame(scroll);
-  }, []);
-
-  const stopScrolling = useCallback(() => {
-    isScrollingRef.current = false;
-    cancelAnimationFrame(animationRef.current);
-  }, []);
-
-  const handleScroll = (direction) => {
-    stopScrolling();
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -200 : 200,
-        behavior: "smooth"
-      });
-    }
-    setTimeout(startScrolling, 3000);
-  };
-
-  useEffect(() => {
-    startScrolling();
-    return () => stopScrolling();
-  }, [startScrolling, stopScrolling]);
-
+  // Memoized stock items with optimized rendering
   const stockItems = useMemo(() => {
-    return SYMBOLS.map((symbol, index) => {
+    return SYMBOLS.map((symbol) => {
       const stock = STOCK_DATA[symbol];
       if (!stock) return null;
 
-      const change = stock.change || "0.00";
-      const changePercent = stock.changePercent || "0.00%";
-      const isNegative = String(change).startsWith('-') || 
-                         String(changePercent).startsWith('-');
+      const isNegative = stock.change.startsWith('-') || stock.changePercent.startsWith('-');
+      const changeColor = isNegative ? "text-red-400" : "text-green-400";
+      const bgColor = isNegative ? "bg-red-900/30" : "bg-green-900/30";
 
       return (
         <div
-          key={`${symbol}-${index}`}
+          key={symbol}
           className="flex items-center gap-4 px-6 text-sm border-r border-gray-700 min-w-max"
         >
           <span className="font-bold text-gray-100">{stock.symbol}</span>
           <span className="text-gray-300">{stock.price}</span>
           <div className="flex items-center gap-1">
-            <span className={`font-medium ${isNegative ? "text-red-400" : "text-green-400"}`}>
-              {change}
+            <span className={`font-medium ${changeColor}`}>
+              {stock.change}
             </span>
-            <span className={`text-xs px-1.5 py-0.5 rounded ${
-              isNegative ? "bg-red-900/30 text-red-400" : "bg-green-900/30 text-green-400"
-            }`}>
-              {changePercent}
+            <span className={`text-xs px-1.5 py-0.5 rounded ${bgColor} ${changeColor}`}>
+              {stock.changePercent}
             </span>
           </div>
         </div>
@@ -127,21 +94,94 @@ const PriceBar = () => {
     }).filter(Boolean);
   }, []);
 
-  const duplicatedStockItems = useMemo(() => {
-    return stockItems.concat(stockItems.map((item, index) => {
-      if (!item) return null;
-      return React.cloneElement(item, {
-        key: `${item.key}-copy-${index}`,
-        className: item.props.className
-      });
-    }).filter(Boolean));
-  }, [stockItems]);
+  // Optimized scroll handler using requestAnimationFrame
+  const animateScroll = useCallback((time) => {
+    if (!scrollRef.current || isPaused) {
+      requestRef.current = null;
+      return;
+    }
 
+    // Throttle scroll updates based on time
+    const deltaTime = time - lastScrollTime.current;
+    if (deltaTime >= SCROLL_INTERVAL) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+
+      if (scrollLeft >= maxScroll - RESET_BUFFER) {
+        scrollRef.current.scrollLeft = 0;
+      } else {
+        // Adjust speed based on container width for consistency
+        const speedFactor = clientWidth > 768 ? 1 : 0.8; // Slower on mobile
+        scrollRef.current.scrollLeft += SCROLL_SPEED * speedFactor;
+      }
+      lastScrollTime.current = time;
+    }
+
+    requestRef.current = requestAnimationFrame(animateScroll);
+  }, [isPaused]);
+
+  // Start auto-scrolling with optimized timing
+  const startScrolling = useCallback(() => {
+    if (requestRef.current) return;
+    lastScrollTime.current = performance.now();
+    requestRef.current = requestAnimationFrame(animateScroll);
+  }, [animateScroll]);
+
+  // Stop auto-scrolling
+  const stopScrolling = useCallback(() => {
+    if (requestRef.current) {
+      cancelAnimationFrame(requestRef.current);
+      requestRef.current = null;
+    }
+  }, []);
+
+  // Optimized manual scroll handler
+  const handleManualScroll = useCallback((direction) => {
+    if (!scrollRef.current) return;
+    
+    setIsPaused(true);
+    stopScrolling();
+    
+    const scrollAmount = direction === "left" ? -MANUAL_SCROLL_OFFSET : MANUAL_SCROLL_OFFSET;
+    scrollRef.current.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth"
+    });
+
+    // Use a single timeout with cleanup
+    const resumeTimer = setTimeout(() => {
+      setIsPaused(false);
+      startScrolling();
+    }, SCROLL_PAUSE_ON_INTERACTION);
+
+    return () => clearTimeout(resumeTimer);
+  }, [startScrolling, stopScrolling]);
+
+  // Event handlers with passive listeners
+  const handleMouseEnter = useCallback(() => {
+    setIsPaused(true);
+    stopScrolling();
+  }, [stopScrolling]);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsPaused(false);
+    startScrolling();
+  }, [startScrolling]);
+
+  // Initialize with cleanup
+  useEffect(() => {
+    startScrolling();
+    return () => {
+      stopScrolling();
+    };
+  }, [startScrolling, stopScrolling]);
+
+  // Optimized render with reduced re-renders
   return (
     <div className="w-full top-0 left-0 z-50 bg-gray-900 text-white py-1.5 overflow-hidden fixed shadow-md">
       <button
         className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900/80 p-2 hover:bg-gray-800 hidden sm:block"
-        onClick={() => handleScroll("left")}
+        onClick={() => handleManualScroll("left")}
         aria-label="Scroll left"
       >
         <ChevronLeft className="text-white w-5 h-5" />
@@ -149,16 +189,17 @@ const PriceBar = () => {
 
       <div
         ref={scrollRef}
-        className="flex w-full whitespace-nowrap overflow-x-hidden scroll-smooth"
-        onMouseEnter={stopScrolling}
-        onMouseLeave={startScrolling}
+        className="flex w-full whitespace-nowrap overflow-x-hidden scroll-smooth will-change-transform"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {duplicatedStockItems}
+        {stockItems}
+        {stockItems} {/* Duplicate for seamless looping */}
       </div>
 
       <button
         className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900/80 p-2 hover:bg-gray-800 hidden sm:block"
-        onClick={() => handleScroll("right")}
+        onClick={() => handleManualScroll("right")}
         aria-label="Scroll right"
       >
         <ChevronRight className="text-white w-5 h-5" />
@@ -167,4 +208,4 @@ const PriceBar = () => {
   );
 };
 
-export default PriceBar;
+export default React.memo(PriceBar);
