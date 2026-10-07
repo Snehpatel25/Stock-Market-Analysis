@@ -54,8 +54,8 @@ const SignUp = () => {
     if (!formData.password) {
       errors.password = 'Password is required';
       isValid = false;
-    } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/.test(formData.password)) {
-      errors.password = 'Must include uppercase, lowercase, number, and special character';
+    } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(formData.password)) {
+      errors.password = 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character';
       isValid = false;
     }
 
@@ -94,8 +94,10 @@ const SignUp = () => {
     
     setIsSubmitting(true);
 
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
     try {
-      const res = await fetch('http://localhost:5000/api/signup', {
+      const res = await fetch(`${apiBaseUrl}/api/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -120,7 +122,7 @@ const SignUp = () => {
           throw new Error(errorMessage);
         }
         
-        throw new Error(data.message || 'Registration failed');
+        throw new Error(data.error || data.message || 'Registration failed');
       }
 
       alert(`Sign-up successful as ${formData.isAdmin ? 'Admin' : 'User'}! Please log in.`);

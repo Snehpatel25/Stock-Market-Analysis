@@ -11,42 +11,63 @@ dotenv.config({ path: [".env.local", ".env"] });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "default_jwt_secret_change_in_production";
+const MONGO_URI = process.env.MONGO_URI;
 
-if (!JWT_SECRET) {
-  console.error("❌ FATAL: JWT_SECRET is not defined");
-  process.exit(1);
+if (!process.env.JWT_SECRET) {
+  console.warn("⚠️ WARNING: JWT_SECRET environment variable is not defined. Using fallback secret.");
 }
 
 app.use(helmet());
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 
-const corsOptions = {
-  origin: [
-    "http://localhost:5174",
-    "http://127.0.0.1:5174",
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "Accept"],
-  optionsSuccessStatus: 200,
-};
-app.use(cors());
+// Dynamic CORS configuration to support local and cloud deployments (Vercel, Render, Netlify)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://127.0.0.1:5173",
+  "http://127.0.0.1:5174",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (
+        allowedOrigins.includes(origin) ||
+        process.env.NODE_ENV !== "production" ||
+        origin.endsWith(".vercel.app") ||
+        origin.endsWith(".netlify.app") ||
+        origin.endsWith(".onrender.com")
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+    optionsSuccessStatus: 200,
+  })
+);
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
-  message: "Too many requests, please try again later.",
+  message: { error: "Too many requests, please try again later." },
   standardHeaders: true,
   legacyHeaders: false,
 });
 
 const connectWithRetry = async () => {
+  if (!MONGO_URI) {
+    console.error("❌ FATAL: MONGO_URI environment variable is not defined.");
+    return;
+  }
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    await mongoose.connect(MONGO_URI, {
       serverSelectionTimeoutMS: 5000,
     });
     console.log("✅ Connected to MongoDB");
@@ -84,7 +105,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 8,
-    select: false, 
+    select: false,
   },
   mobile: {
     type: String,
@@ -109,6 +130,11 @@ userSchema.pre("save", async function (next) {
 
 const User = mongoose.model("createaccounts", userSchema);
 
+// Root and Health endpoints
+app.get("/", (req, res) => {
+  res.json({ status: "OK", message: "Stock Analysis API is running" });
+});
+
 app.get("/api/health", (req, res) => {
   const dbStatus = mongoose.connection.readyState === 1 ? "connected" : "disconnected";
   res.json({
@@ -119,7 +145,29 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-app.post("/api/signup", authLimiter, async (req, res) => {
+// Authentication middleware
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader?.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({ error: "Authentication required." });
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({
+        error: "Invalid token.",
+        details: err.message.includes("expired") ? "Token has expired" : "Invalid token.",
+      });
+    }
+    req.user = decoded;
+    next();
+  });
+}
+
+// Signup handler
+const signupHandler = async (req, res) => {
   try {
     const { firstName, lastName, email, username, password, mobile, isAdmin } = req.body;
 
@@ -127,9 +175,17 @@ app.post("/api/signup", authLimiter, async (req, res) => {
       return res.status(400).json({ error: "Missing required fields." });
     }
 
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
-    if (existingUser) {
-      return res.status(409).json({ error: "User already exists." });
+    const existingEmail = await User.findOne({ email });
+    const existingUsername = await User.findOne({ username });
+
+    if (existingEmail || existingUsername) {
+      return res.status(409).json({
+        error: "User already exists.",
+        exists: {
+          email: !!existingEmail,
+          username: !!existingUsername,
+        },
+      });
     }
 
     const newUser = await User.create({
@@ -157,14 +213,14 @@ app.post("/api/signup", authLimiter, async (req, res) => {
       user: userResponse,
       token,
     });
-
   } catch (err) {
     console.error("Signup error:", err);
     res.status(500).json({ error: "Registration failed.", details: err.message });
   }
-});
+};
 
-app.post("/api/login", authLimiter, async (req, res) => {
+// Login handler
+const loginHandler = async (req, res) => {
   try {
     const { username, password, userType } = req.body;
 
@@ -174,7 +230,7 @@ app.post("/api/login", authLimiter, async (req, res) => {
 
     const user = await User.findOne({ username }).select("+password");
     if (!user) {
-      return res.status(401).json({ error: "Invalid username or password." });
+      return res.status(401).json({ error: "Invalid username or practical credentials." });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -204,48 +260,67 @@ app.post("/api/login", authLimiter, async (req, res) => {
       user: userResponse,
       token,
     });
-
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ error: "Authentication failed.", details: err.message });
   }
-});
+};
+
+// Session verify handler
+const verifyHandler = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ valid: false, error: "User not found." });
+    }
+    res.json({ valid: true, user });
+  } catch (err) {
+    console.error("Token verification error:", err);
+    res.status(500).json({ valid: false, error: "Verification failed." });
+  }
+};
+
+// Update profile handler
+const updateUserHandler = async (req, res) => {
+  try {
+    const { firstName, lastName, mobile, countryCode } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user.userId,
+      { $set: { firstName, lastName, mobile, countryCode } },
+      { new: true, runValidators: true }
+    ).select("-password");
+
+    if (!updatedUser) return res.status(404).json({ error: "User not found." });
+    res.json({ success: true, user: updatedUser });
+  } catch (err) {
+    console.error("Update profile error:", err);
+    res.status(500).json({ error: "Failed to update user profile.", details: err.message });
+  }
+};
+
+// Routes registration
+app.post("/api/signup", authLimiter, signupHandler);
+app.post("/signup", authLimiter, signupHandler);
+
+app.post("/api/login", authLimiter, loginHandler);
+app.post("/login", authLimiter, loginHandler);
+
+app.get("/api/auth/verify", authenticateToken, verifyHandler);
+app.get("/auth/verify", authenticateToken, verifyHandler);
+
+app.put("/api/auth/user", authenticateToken, updateUserHandler);
+app.put("/auth/user", authenticateToken, updateUserHandler);
 
 app.get("/api/protected", authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
     if (!user) return res.status(404).json({ error: "User not found." });
-
-    res.json({
-      message: "Protected route accessed successfully.",
-      user,
-    });
-
+    res.json({ message: "Protected route accessed successfully.", user });
   } catch (err) {
     console.error("Protected route error:", err);
     res.status(500).json({ error: "Server error." });
   }
 });
-
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader?.split(" ")[1];
-
-  if (!token) {
-    return res.status(401).json({ error: "Authentication required." });
-  }
-
-  jwt.verify(token, JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(403).json({
-        error: "Invalid token.",
-        details: err.message.includes("expired") ? "Token has expired" : "Invalid token.",
-      });
-    }
-    req.user = decoded;
-    next();
-  });
-}
 
 app.use((req, res) => {
   res.status(404).json({ error: "Endpoint not found.", requestedUrl: req.originalUrl });
@@ -265,5 +340,8 @@ app.listen(PORT, () => {
   - GET  /api/health
   - POST /api/signup
   - POST /api/login
+  - GET  /api/auth/verify
+  - PUT  /api/auth/user
   - GET  /api/protected`);
 });
+
