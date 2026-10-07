@@ -61,22 +61,42 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-const connectWithRetry = async () => {
+// Serverless-ready MongoDB connection caching
+let cachedDbConnection = null;
+
+const connectDB = async () => {
+  if (cachedDbConnection && mongoose.connection.readyState === 1) {
+    return cachedDbConnection;
+  }
+
   if (!MONGO_URI) {
     console.error("❌ FATAL: MONGO_URI environment variable is not defined.");
-    return;
+    return null;
   }
+
   try {
-    await mongoose.connect(MONGO_URI, {
+    cachedDbConnection = await mongoose.connect(MONGO_URI, {
       serverSelectionTimeoutMS: 5000,
+      bufferCommands: false,
     });
     console.log("✅ Connected to MongoDB");
+    return cachedDbConnection;
   } catch (err) {
     console.error("MongoDB connection error:", err.message);
-    setTimeout(connectWithRetry, 5000);
+    cachedDbConnection = null;
+    return null;
   }
 };
-connectWithRetry();
+
+// Connect immediately on startup and ensure connection per request
+connectDB();
+
+app.use(async (req, res, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    await connectDB();
+  }
+  next();
+});
 
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true, trim: true, maxlength: 50 },
@@ -334,14 +354,19 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running: http://localhost:${PORT}`);
-  console.log(`📡 Available endpoints:
-  - GET  /api/health
-  - POST /api/signup
-  - POST /api/login
-  - GET  /api/auth/verify
-  - PUT  /api/auth/user
-  - GET  /api/protected`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running: http://localhost:${PORT}`);
+    console.log(`📡 Available endpoints:
+    - GET  /api/health
+    - POST /api/signup
+    - POST /api/login
+    - GET  /api/auth/verify
+    - PUT  /api/auth/user
+    - GET  /api/protected`);
+  });
+}
+
+export default app;
+
 
