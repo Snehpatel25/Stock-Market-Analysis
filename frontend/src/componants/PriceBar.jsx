@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Constants
 const SYMBOLS = [
   "^NSEI",    // Nifty 50
   "^NSEBANK", // Nifty Bank
   "HDFCBANK.NS",
   "ITC.NS",
   "MARUTI.NS",
-  "BAJFINANCE.NS"
+  "BAJFINANCE.NS",
+  "RELIANCE.NS",
+  "TCS.NS",
+  "INFY.NS"
 ];
 
 const STOCK_DATA = {
@@ -47,45 +49,52 @@ const STOCK_DATA = {
     price: "7,245.30",
     change: "+45.20",
     changePercent: "+0.63%"
+  },
+  "RELIANCE.NS": {
+    symbol: "RELIANCE",
+    price: "2,468.90",
+    change: "+18.20",
+    changePercent: "+0.74%"
+  },
+  "TCS.NS": {
+    symbol: "TCS",
+    price: "3,510.45",
+    change: "-14.60",
+    changePercent: "-0.41%"
+  },
+  "INFY.NS": {
+    symbol: "INFY",
+    price: "1,482.10",
+    change: "+22.50",
+    changePercent: "+1.54%"
   }
 };
 
-// Performance tuning parameters
-const SCROLL_SPEED = 2; // Increased from 1 to 2 (pixels per frame)
-const SCROLL_INTERVAL = 16; // ~60fps (reduced from 30ms)
-const SCROLL_PAUSE_ON_INTERACTION = 2000; // Reduced from 3000ms
-const MANUAL_SCROLL_OFFSET = 300; // Increased from 200px
-const RESET_BUFFER = 50; // Pixels before end to trigger reset
-
 const PriceBar = () => {
-  const scrollRef = useRef(null);
-  const scrollIntervalRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const requestRef = useRef(null);
-  const lastScrollTime = useRef(performance.now());
+  const containerRef = useRef(null);
+  const [speedMultiplier, setSpeedMultiplier] = useState(1);
 
-  // Memoized stock items with optimized rendering
-  const stockItems = useMemo(() => {
+  const stockItemElements = useMemo(() => {
     return SYMBOLS.map((symbol) => {
       const stock = STOCK_DATA[symbol];
       if (!stock) return null;
 
-      const isNegative = stock.change.startsWith('-') || stock.changePercent.startsWith('-');
+      const isNegative = stock.change.startsWith("-") || stock.changePercent.startsWith("-");
       const changeColor = isNegative ? "text-red-400" : "text-green-400";
       const bgColor = isNegative ? "bg-red-900/30" : "bg-green-900/30";
 
       return (
         <div
           key={symbol}
-          className="flex items-center gap-4 px-6 text-sm border-r border-gray-700 min-w-max"
+          className="flex items-center gap-3 px-6 text-sm border-r border-gray-800 shrink-0 select-none"
         >
-          <span className="font-bold text-gray-100">{stock.symbol}</span>
-          <span className="text-gray-300">{stock.price}</span>
-          <div className="flex items-center gap-1">
-            <span className={`font-medium ${changeColor}`}>
+          <span className="font-bold text-gray-100 tracking-wide">{stock.symbol}</span>
+          <span className="text-gray-300 font-mono">₹{stock.price}</span>
+          <div className="flex items-center gap-1.5 font-mono">
+            <span className={`font-semibold text-xs ${changeColor}`}>
               {stock.change}
             </span>
-            <span className={`text-xs px-1.5 py-0.5 rounded ${bgColor} ${changeColor}`}>
+            <span className={`text-[11px] px-1.5 py-0.5 rounded font-medium ${bgColor} ${changeColor}`}>
               {stock.changePercent}
             </span>
           </div>
@@ -94,118 +103,51 @@ const PriceBar = () => {
     }).filter(Boolean);
   }, []);
 
-  // Optimized scroll handler using requestAnimationFrame
-  const animateScroll = useCallback((time) => {
-    if (!scrollRef.current || isPaused) {
-      requestRef.current = null;
-      return;
-    }
-
-    // Throttle scroll updates based on time
-    const deltaTime = time - lastScrollTime.current;
-    if (deltaTime >= SCROLL_INTERVAL) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      const maxScroll = scrollWidth - clientWidth;
-
-      if (scrollLeft >= maxScroll - RESET_BUFFER) {
-        scrollRef.current.scrollLeft = 0;
-      } else {
-        // Adjust speed based on container width for consistency
-        const speedFactor = clientWidth > 768 ? 1 : 0.8; // Slower on mobile
-        scrollRef.current.scrollLeft += SCROLL_SPEED * speedFactor;
-      }
-      lastScrollTime.current = time;
-    }
-
-    requestRef.current = requestAnimationFrame(animateScroll);
-  }, [isPaused]);
-
-  // Start auto-scrolling with optimized timing
-  const startScrolling = useCallback(() => {
-    if (requestRef.current) return;
-    lastScrollTime.current = performance.now();
-    requestRef.current = requestAnimationFrame(animateScroll);
-  }, [animateScroll]);
-
-  // Stop auto-scrolling
-  const stopScrolling = useCallback(() => {
-    if (requestRef.current) {
-      cancelAnimationFrame(requestRef.current);
-      requestRef.current = null;
-    }
-  }, []);
-
-  // Optimized manual scroll handler
-  const handleManualScroll = useCallback((direction) => {
-    if (!scrollRef.current) return;
-    
-    setIsPaused(true);
-    stopScrolling();
-    
-    const scrollAmount = direction === "left" ? -MANUAL_SCROLL_OFFSET : MANUAL_SCROLL_OFFSET;
-    scrollRef.current.scrollBy({
+  const handleManualScroll = (direction) => {
+    if (!containerRef.current) return;
+    const scrollAmount = direction === "left" ? -300 : 300;
+    containerRef.current.scrollBy({
       left: scrollAmount,
       behavior: "smooth"
     });
+  };
 
-    // Use a single timeout with cleanup
-    const resumeTimer = setTimeout(() => {
-      setIsPaused(false);
-      startScrolling();
-    }, SCROLL_PAUSE_ON_INTERACTION);
-
-    return () => clearTimeout(resumeTimer);
-  }, [startScrolling, stopScrolling]);
-
-  // Event handlers with passive listeners
-  const handleMouseEnter = useCallback(() => {
-    setIsPaused(true);
-    stopScrolling();
-  }, [stopScrolling]);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsPaused(false);
-    startScrolling();
-  }, [startScrolling]);
-
-  // Initialize with cleanup
-  useEffect(() => {
-    startScrolling();
-    return () => {
-      stopScrolling();
-    };
-  }, [startScrolling, stopScrolling]);
-
-  // Optimized render with reduced re-renders
   return (
-    <div className="w-full top-0 left-0 z-50 bg-gray-900 text-white py-1.5 overflow-hidden fixed shadow-md">
+    <div className="w-full top-0 left-0 z-50 bg-[#0d1522]/95 backdrop-blur-md border-b border-gray-800/80 text-white py-2 overflow-hidden fixed shadow-lg">
+      {/* Left button */}
       <button
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900/80 p-2 hover:bg-gray-800 hidden sm:block"
+        className="absolute left-0 top-0 bottom-0 z-20 bg-gradient-to-r from-[#0d1522] via-[#0d1522]/90 to-transparent px-2.5 flex items-center justify-center hover:text-cyan-400 transition-colors hidden sm:flex"
         onClick={() => handleManualScroll("left")}
         aria-label="Scroll left"
       >
-        <ChevronLeft className="text-white w-5 h-5" />
+        <ChevronLeft className="w-5 h-5 drop-shadow" />
       </button>
 
+      {/* Ticker track */}
       <div
-        ref={scrollRef}
-        className="flex w-full whitespace-nowrap overflow-x-hidden scroll-smooth will-change-transform"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        ref={containerRef}
+        className="flex w-full overflow-x-hidden no-scrollbar"
       >
-        {stockItems}
-        {stockItems} {/* Duplicate for seamless looping */}
+        <div className="animate-ticker flex shrink-0">
+          {stockItemElements}
+          {stockItemElements}
+        </div>
+        <div className="animate-ticker flex shrink-0" aria-hidden="true">
+          {stockItemElements}
+          {stockItemElements}
+        </div>
       </div>
 
+      {/* Right button */}
       <button
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900/80 p-2 hover:bg-gray-800 hidden sm:block"
+        className="absolute right-0 top-0 bottom-0 z-20 bg-gradient-to-l from-[#0d1522] via-[#0d1522]/90 to-transparent px-2.5 flex items-center justify-center hover:text-cyan-400 transition-colors hidden sm:flex"
         onClick={() => handleManualScroll("right")}
         aria-label="Scroll right"
       >
-        <ChevronRight className="text-white w-5 h-5" />
+        <ChevronRight className="w-5 h-5 drop-shadow" />
       </button>
     </div>
   );
 };
 
-export default React.memo(PriceBar);
+export default React.memo(PriceBar);
