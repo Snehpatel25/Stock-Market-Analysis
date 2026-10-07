@@ -2,18 +2,30 @@
   "name": "stock-analysis",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-  "dev": "concurrently --prefix \"[{name}]\" --names \"BACKEND,FRONTEND\" --prefix-colors \"blue,green\" \"npm run server\" \"npm run client\"",
-  "server": "cd backend && npm run dev",
-  "client": "wait-on tcp:5000 && cd frontend && npm run dev"
-},
+    "build": "echo 'Build completed'",
+    "dev": "concurrently --prefix \"[{name}]\" --names \"BACKEND,FRONTEND\" --prefix-colors \"blue,green\" \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "wait-on tcp:5000 && cd frontend && npm run dev",
+    "start": "node backend/server.js"
+  },
   "devDependencies": {
     "concurrently": "^8.2.2",
     "wait-on": "^8.0.3"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "express-rate-limit": "^7.5.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.2",
     "node-fetch": "^3.3.2"
   }
 }
+
