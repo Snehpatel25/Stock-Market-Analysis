@@ -14,7 +14,11 @@ export const AuthProvider = ({ children }) => {
   });
 
   const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000",
+    baseURL:
+      import.meta.env.VITE_API_BASE_URL ||
+      (import.meta.env.PROD
+        ? "https://stock-market-analysis-silk.vercel.app"
+        : "http://localhost:5000"),
     timeout: 10000,
     headers: { "Content-Type": "application/json" }
   });

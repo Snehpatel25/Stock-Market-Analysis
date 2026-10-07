@@ -94,7 +94,11 @@ const SignUp = () => {
     
     setIsSubmitting(true);
 
-    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+    const apiBaseUrl =
+      import.meta.env.VITE_API_BASE_URL ||
+      (import.meta.env.PROD
+        ? 'https://stock-market-analysis-silk.vercel.app'
+        : 'http://localhost:5000');
 
     try {
       const res = await fetch(`${apiBaseUrl}/api/signup`, {
