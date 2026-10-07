@@ -6,11 +6,21 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = useState({
-    isLoggedIn: false,
-    user: null,
-    loading: true,
-    error: null
+  const [authState, setAuthState] = useState(() => {
+    const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+    const userStr = typeof window !== "undefined" ? localStorage.getItem("user") : null;
+    let user = null;
+    try {
+      user = userStr ? JSON.parse(userStr) : null;
+    } catch (e) {
+      user = null;
+    }
+    return {
+      isLoggedIn: !!token && !!user,
+      user,
+      loading: false,
+      error: null
+    };
   });
 
   const api = axios.create({
@@ -52,27 +62,32 @@ export const AuthProvider = ({ children }) => {
 
       if (token && userData) {
         try {
-          const response = await api.get("/auth/verify");
-          if (response.data.valid) {
-            setAuthState({
+          const response = await api.get("/api/auth/verify");
+          if (response.data?.valid && response.data?.user) {
+            setAuthState(prev => ({
+              ...prev,
               isLoggedIn: true,
-              user: JSON.parse(userData),
+              user: response.data.user,
               loading: false,
               error: null
-            });
-          } else {
-            throw new Error("Invalid token");
+            }));
+            localStorage.setItem("user", JSON.stringify(response.data.user));
           }
         } catch (err) {
-          console.error("Session expired:", err);
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
-          setAuthState({
-            isLoggedIn: false,
-            user: null,
-            loading: false,
-            error: "Session expired, please login again"
-          });
+          if (err.response?.status === 401 || err.response?.status === 403) {
+            console.warn("Session expired or invalid:", err);
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            setAuthState({
+              isLoggedIn: false,
+              user: null,
+              loading: false,
+              error: "Session expired, please login again"
+            });
+          } else {
+            console.warn("Session check fallback to cached session:", err.message);
+            setAuthState(prev => ({ ...prev, loading: false }));
+          }
         }
       } else {
         setAuthState(prev => ({ ...prev, loading: false }));
